@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import Carousel from "../../components/Carousel";
 import Banner from "../../components/Banner";
 import Section from "../../components/Section";
+import Loading from "../../components/Loading";
 
 const Home = () => {
     const data = [
@@ -54,6 +55,7 @@ const Home = () => {
                 <Section title="New releases" data={data}/>
                 <Section title="Most popular" data={data}/>
                 <Section title="Romance" data={data}/>
+                <Loading/>
             </div>
         </div>
     )

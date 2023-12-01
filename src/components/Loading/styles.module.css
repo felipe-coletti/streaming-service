@@ -1,0 +1,13 @@
+.container {
+    color: #FC413A;
+    font-size: 3rem;
+    padding-inline: 3rem;
+    text-align: center;
+    width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding-inline: 1.5rem;
+    }
+}
