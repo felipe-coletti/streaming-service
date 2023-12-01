@@ -41,11 +41,6 @@ const Carousel = ({ data }) => {
             <button className={styles.rightButton} title="Next" onClick={handleRight}>
                 <Icon icon="ep:arrow-right-bold" />
             </button>
-            <div className={styles.pagination}>
-                {data.map((item, i) => (
-                    <div className={currentPage === i ? (styles.selectedPagePill) : (styles.pagePill)} onClick={() => {paginate(i)}} key={i}></div>
-                ))}
-            </div>
             <div className={styles.carousel} ref={carousel}>
                 {data.map((item, i) => (
                     <div className={currentPage === i ? (styles.selectedCard) : (styles.card)} key={i} ref={card}>
@@ -62,6 +57,11 @@ const Carousel = ({ data }) => {
                             </button>
                         </div>
                     </div>
+                ))}
+            </div>
+            <div className={styles.pagination}>
+                {data.map((item, i) => (
+                    <div className={currentPage === i ? (styles.selectedPagePill) : (styles.pagePill)} onClick={() => {paginate(i)}} key={i}></div>
                 ))}
             </div>
         </div>
