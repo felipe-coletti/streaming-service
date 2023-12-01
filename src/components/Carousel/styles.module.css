@@ -1,0 +1,201 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.carouselContainer {
+    display: flex;
+    height: 75vh;
+    position: relative;
+    width: 100%;
+}
+
+.buttonsArea {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.leftButton {
+    left: 0;
+}
+
+.rightButton {
+    right: 0;
+}
+
+.leftButton, .rightButton {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.25rem;
+    height: 6rem;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    z-index: 1;
+}
+
+.pagination {
+    align-items: center;
+    display: flex;
+    bottom: 0;
+    gap: 0.5rem;
+    height: 3rem;
+    left: 50%;
+    padding-inline: 3rem;
+    position: absolute;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.pagePill {
+    background-color: #ababab;
+    width: 1.5rem;
+}
+  
+.pagePill:hover {
+    background-color: #fff;
+}
+
+.selectedPagePill {
+    background-color: #FC413A;
+    width: 3rem;
+}
+
+.pagePill, .selectedPagePill {
+    border-radius: 0.25rem;
+    cursor: pointer;
+    height: 0.5rem;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: hidden;
+    /*scroll-behavior: smooth;*/
+    width: 100%;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    opacity: 0;
+}
+
+.selectedCard {
+    opacity: 1;
+}
+
+.card, .selectedCard {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+    justify-content: center;
+    padding: 3rem;
+    text-decoration: none;
+    transition: opacity .6s;
+    width: 100%;
+}
+
+.image {
+    height: 100%;
+    width: 100%;
+}
+
+.primaryTitle {
+    color: #fff;
+    font-size: 2rem;
+}
+
+.paragraph {
+    color: #ababab;
+    font-size: 0.875rem;
+}
+
+.actionsArea {
+    align-items: center;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.primaryButton {
+    background-color: #FC413A;
+    color: #000;
+}
+
+.primaryButton:hover {
+    background-color: #FD5953;
+}
+
+.secondaryButton {
+    background-color: transparent;
+    color: #FC413A;
+}
+
+.secondaryButton:hover {
+    color: #FD5953;
+}
+
+.primaryButton, .secondaryButton {
+    align-items: center;
+    border: 1px solid #FC413A;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    font-size: 0.875rem;
+    font-weight: bold;
+    gap: 0.5rem;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    text-decoration: none;
+}
+
+.primaryButton:hover, .secondaryButton:hover {
+    border: 1px solid #FD5953;
+}
+
+@media screen and (max-width: 480px) {
+    .leftButton, .rightButton {
+        display: none;
+    }
+
+    .pagination {
+        height: 1.5rem;
+        padding-inline: 1.5rem;
+        width: 100%;
+    }
+
+    .card, .selectedCard {
+        justify-content: end;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .paragraph {
+        display: none;
+    }
+
+    .actionsArea {
+        margin-bottom: 1.5rem;
+    }
+
+    .primaryButton, .secondaryButton {
+        justify-content: center;
+        width: 100%;
+    }
+}

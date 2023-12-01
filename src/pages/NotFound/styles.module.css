@@ -1,0 +1,54 @@
+.container {
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    background-color: #000;
+    border-bottom: 1px solid #353535;
+    display: flex;
+    justify-content: center;
+    padding-block: 0.75rem;
+    padding-inline: 3rem;
+}
+
+.logo {
+    color: #FC413A;
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contentArea {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+.primaryTitle {
+    font-size: 8rem;
+}
+
+.secondaryTitle {
+    font-size: 1.5rem;
+}
+
+.primaryTitle, .secondaryTitle {
+    color: #fff;
+}
+
+.link {
+    color: #FC413A;
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

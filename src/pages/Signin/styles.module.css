@@ -1,0 +1,98 @@
+.container {
+    align-items: center;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.contentArea {
+    border: 1px solid #353535;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 25rem;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.primaryTitle {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.inputField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    color: #fff;
+}
+
+.input {
+    background-color: transparent;
+    border: 1px solid #353535;
+    color: #fff;
+}
+
+.link {
+    color: #FC413A;
+    text-decoration: none;
+}
+
+.link:hover {
+    color:  #FD5953;
+    text-decoration: underline;
+}
+
+.primaryButton {
+    background-color: #FC413A;
+    border: 1px solid #FC413A;
+    color: #000;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.primaryButton:hover {
+    background-color:  #FD5953;
+    border: 1px solid #FD5953;
+}
+
+.input, .primaryButton {
+    border-radius: 0.5rem;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+}
+
+.paragraph {
+    color: #ababab;
+}
+
+.primaryTitle, .paragraph {
+    text-align: center;
+}
+
+.link, .paragraph {
+    font-size: 0.875rem;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        align-items: unset;
+    }
+    
+    .contentArea {
+        border-radius: 0;
+        border: none;
+    }
+}

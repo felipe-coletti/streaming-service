@@ -1,0 +1,18 @@
+.container {
+    background-color: #000;
+    min-height: 100vh;
+}
+
+.contentArea {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 3rem;
+}
+
+@media screen and (max-width: 480px) {
+    .contentArea {
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+}

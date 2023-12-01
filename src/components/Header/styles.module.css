@@ -1,0 +1,78 @@
+.container {
+    background-color: #000;
+    border-bottom: 1px solid #353535;
+    display: flex;
+    justify-content: space-between;
+    padding-block: 0.75rem;
+    padding-inline: 3rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.logo {
+    color: #FC413A;
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.actionsArea {
+    align-items: center;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.noTextButton {
+    background-color: transparent;
+    border: none;
+    color: #ababab;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+}
+
+.noTextButton:hover {
+    color: #fff;
+}
+
+.secondaryButton {
+    background-color: transparent;
+    color: #FC413A;
+}
+
+.secondaryButton:hover {
+    color: #FD5953;
+}
+
+.primaryButton {
+    background-color: #FC413A;
+    color: #000;
+}
+
+.primaryButton:hover {
+    background-color: #FD5953;
+}
+
+.secondaryButton, .primaryButton {
+    border: 1px solid #FC413A;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: bold;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    text-decoration: none;
+}
+
+.secondaryButton:hover, .primaryButton:hover {
+    border: 1px solid #FD5953;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding-inline: 1.5rem;
+    }
+}

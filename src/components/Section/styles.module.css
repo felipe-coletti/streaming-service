@@ -1,0 +1,96 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.primaryTitle {
+    color: #fff;
+    font-size: 1.5rem;
+    padding-inline: 3rem;
+}
+
+.carouselContainer {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+.buttonsArea {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.leftButton {
+    background-color: transparent;
+    left: 0;
+}
+
+.rightButton {
+    background-color: transparent;
+    right: 0;
+}
+
+.leftButton:hover {
+    background: linear-gradient(to right, #ffffff10, transparent);
+}
+
+.rightButton:hover {
+    background: linear-gradient(to left, #ffffff10, transparent);
+}
+
+.leftButton, .rightButton {
+    align-items: center;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.25rem;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    width: 3rem;
+}
+
+.carousel {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-inline: 3rem;
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.image {
+    height: 14rem;
+    width: 10rem;
+}
+
+.secondaryTitle {
+    color: #fff;
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 480px) {
+    .primaryTitle, .carousel {
+        padding-inline: 1.5rem;
+    }
+
+    .leftButton, .rightButton {
+        display: none;
+    }
+}

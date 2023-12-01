@@ -1,0 +1,89 @@
+.container {
+    background-color: #000;
+    min-height: 100vh;
+}
+
+.contentArea {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 3rem;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.primaryTitle {
+    color: #fff;
+    font-size: 2rem;
+}
+
+.label {
+    color: #fff;
+}
+
+.paragraph {
+    color: #ababab;
+    font-size: 0.875rem;
+}
+
+.actionsArea {
+    align-items: center;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.primaryButton {
+    background-color: #FC413A;
+    color: #000;
+}
+
+.primaryButton:hover {
+    background-color: #FD5953;
+}
+
+.secondaryButton {
+    background-color: transparent;
+    color: #FC413A;
+}
+
+.secondaryButton:hover {
+    color: #FD5953;
+}
+
+.primaryButton, .secondaryButton {
+    align-items: center;
+    border: 1px solid #FC413A;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    font-size: 0.875rem;
+    font-weight: bold;
+    gap: 0.5rem;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    text-decoration: none;
+}
+
+.primaryButton:hover, .secondaryButton:hover {
+    border: 1px solid #FD5953;
+}
+
+.icon {
+    font-size: 1.25rem;
+}
+
+.secondaryTitle {
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+@media screen and (max-width: 480px) {
+    .contentArea {
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+}
