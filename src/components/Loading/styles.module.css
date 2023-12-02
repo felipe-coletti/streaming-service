@@ -1,8 +1,9 @@
 .container {
     color: #FC413A;
+    display: flex;
     font-size: 3rem;
+    justify-content: center;
     padding-inline: 3rem;
-    text-align: center;
     width: 100%;
 }
 
