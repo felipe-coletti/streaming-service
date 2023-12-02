@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Signup from "../pages/Signup";
 import Signin from "../pages/Signin";
+import ResetPassword from "../pages/ResetPassword";
 import Serie from "../pages/Serie";
 import NotFound from "../pages/NotFound";
 
@@ -12,6 +13,7 @@ const PagesRoutes = () => {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/sign-up" element={<Signup/>}/>
                 <Route path="/sign-in" element={<Signin/>}/>
+                <Route path="/reset-password" element={<ResetPassword/>}/>
                 <Route path="/series/:id" element={<Serie/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Routes>

@@ -16,7 +16,7 @@ const Signin = () => {
                         <input id="password-input" className={styles.input} type="password" required />
                     </div>
                     <div>
-                        <a className={styles.link} href="">Forget password?</a>
+                        <a className={styles.link} href="/reset-password">Forget password?</a>
                     </div>
                     <button className={styles.primaryButton} type="submit">Sign in</button>
                 </div>
