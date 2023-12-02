@@ -45,6 +45,7 @@ const Carousel = ({ data }) => {
                 {data.map((item, i) => (
                     <div className={currentPage === i ? (styles.selectedCard) : (styles.card)} key={i} ref={card}>
                         <h1 className={styles.primaryTitle}>Name</h1>
+                        <p className={styles.paragraph}>Rating</p>
                         <p className={styles.paragraph}>Description</p>
                         <div className={styles.actionsArea}>
                             <button className={styles.primaryButton}>
