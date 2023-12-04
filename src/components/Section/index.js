@@ -27,7 +27,10 @@ const Section = ({title, data}) => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.primaryTitle}>{title}</h1>
+            <div className={styles.titleArea}>
+                <h1 className={styles.primaryTitle}>{title}</h1>
+                <a className={styles.link} href="">View all <Icon icon="ep:arrow-right-bold" /></a>
+            </div>
             <div className={styles.carouselContainer}>
                 {scrollPosition !== 0 && (
                     <button className={styles.leftButton} title="Previous" onClick={handleLeft}>

@@ -4,10 +4,29 @@
     gap: 1.5rem;
 }
 
+.titleArea {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 3rem;
+}
+
 .primaryTitle {
     color: #fff;
     font-size: 1.5rem;
-    padding-inline: 3rem;
+}
+
+.link {
+    align-items: center;
+    color: #ababab;
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #fff;
 }
 
 .carouselContainer {
@@ -57,7 +76,7 @@
 
 .carousel {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     overflow-x: auto;
     padding-inline: 3rem;
     scroll-behavior: smooth;
