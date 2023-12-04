@@ -38,7 +38,7 @@ const Serie = () => {
                 </section>
                 <section className={styles.section}>
                     <div>
-                        <h2 className={styles.secondaryTitle}>Comments</h2>
+                        <h2 className={styles.secondaryTitle}>0 Comments</h2>
                     </div>
                     <div className={styles.commentContainer}>
                         <img className={styles.profileImage} alt=""/>
@@ -47,9 +47,22 @@ const Serie = () => {
                     </div>
                     <div className={styles.commentContainer}>
                         <img className={styles.profileImage} alt=""/>
-                        <div className={styles.commentContent}>
-                            <h3 className={styles.thirdTitle}>Name</h3>
+                        <div className={styles.commentContentArea}>
+                            <p className={styles.paragraph}><span className={styles.thirdTitle}>Name</span> • 0 seconds ago</p>
                             <p className={styles.paragraph}>Comment</p>
+                            <div className={styles.actionsArea}>
+                                <button className={styles.noTextButton}>
+                                    <Icon icon="tabler:heart" />
+                                    0
+                                </button>
+                                <button className={styles.noTextButton}>
+                                    Reply
+                                </button>
+                            </div>
+                            <button className={styles.noTextButton}>
+                                <Icon icon="ep:arrow-down-bold" />
+                                0 Replys
+                            </button>
                         </div>
                     </div>
                 </section>
