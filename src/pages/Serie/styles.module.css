@@ -13,7 +13,7 @@
 .section {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .primaryTitle {
@@ -79,6 +79,45 @@
 .secondaryTitle {
     color: #fff;
     font-size: 1.25rem;
+}
+
+.profileImage {
+    aspect-ratio: 1/1;
+    flex: none;
+    width: 3rem;
+}
+
+.input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #353535;
+    color: #fff;
+    outline: none;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    width: 100%;
+}
+
+.input:focus {
+    border-bottom: 1px solid;
+}
+
+.commentContainer {
+    align-items: start;
+}
+
+.commentContent {
+    flex-direction: column;
+}
+
+.commentContainer, .commentContent {
+    display: flex;
+    gap: 1rem;
+}
+
+.thirdTitle {
+    color: #fff;
+    font-size: 1rem;
 }
 
 @media screen and (max-width: 480px) {

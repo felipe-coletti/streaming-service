@@ -40,8 +40,18 @@ const Serie = () => {
                     <div>
                         <h2 className={styles.secondaryTitle}>Comments</h2>
                     </div>
-                    <div className={styles.grid}>
-                    </div> 
+                    <div className={styles.commentContainer}>
+                        <img className={styles.profileImage} alt=""/>
+                        <input className={styles.input} placeholder="Write a comment"/>
+                        <button className={styles.primaryButton}>Send</button>
+                    </div>
+                    <div className={styles.commentContainer}>
+                        <img className={styles.profileImage} alt=""/>
+                        <div className={styles.commentContent}>
+                            <h3 className={styles.thirdTitle}>Name</h3>
+                            <p className={styles.paragraph}>Comment</p>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
