@@ -38,6 +38,39 @@ const Serie = () => {
                 </section>
                 <section className={styles.section}>
                     <div>
+                        <h2 className={styles.secondaryTitle}>0 Reviews</h2>
+                    </div>
+                    <div className={styles.commentContainer}>
+                        <img className={styles.profileImage} alt=""/>
+                        <input className={styles.input} placeholder="Write a review"/>
+                        <button className={styles.primaryButton}>Send</button>
+                    </div>
+                    <div className={styles.warningContainer}>
+                        <h1 className={styles.primaryTitle}>Account required</h1>
+                        <p className={styles.paragraph}>You need to be logged in to an account to do this.</p>
+                    </div>
+                    <div className={styles.commentContainer}>
+                        <img className={styles.profileImage} alt=""/>
+                        <div className={styles.commentContentArea}>
+                            <p className={styles.paragraph}><a className={styles.tertiaryTitle} href="" alt="">Name</a> • January 1st, 0000</p>
+                            <div className={styles.actionsArea}>
+                                <div className={styles.filledStar}><Icon icon="ion:star" /></div>
+                                <div className={styles.filledStar}><Icon icon="ion:star" /></div>
+                                <div className={styles.filledStar}><Icon icon="ion:star" /></div>
+                                <div className={styles.filledStar}><Icon icon="ion:star" /></div>
+                                <div className={styles.unfilledStar}><Icon icon="ion:star-outline" /></div>
+                            </div>
+                            <p className={styles.paragraph}>Review</p>
+                            <div className={styles.actionsArea}>
+                                <p className={styles.paragraph}>0 out of 0 people found this review helpful. Did you find this review helpful?</p>
+                                <button className={styles.tertiaryButton}>Yes</button>
+                                <button className={styles.tertiaryButton}>No</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className={styles.section}>
+                    <div>
                         <h2 className={styles.secondaryTitle}>0 Comments</h2>
                     </div>
                     <div className={styles.commentContainer}>
@@ -45,21 +78,25 @@ const Serie = () => {
                         <input className={styles.input} placeholder="Write a comment"/>
                         <button className={styles.primaryButton}>Send</button>
                     </div>
+                    <div className={styles.warningContainer}>
+                        <h1 className={styles.primaryTitle}>Account required</h1>
+                        <p className={styles.paragraph}>You need to be logged in to an account to do this.</p>
+                    </div>
                     <div className={styles.commentContainer}>
                         <img className={styles.profileImage} alt=""/>
                         <div className={styles.commentContentArea}>
-                            <p className={styles.paragraph}><span className={styles.thirdTitle}>Name</span> • 0 seconds ago</p>
+                            <p className={styles.paragraph}><a className={styles.tertiaryTitle} href="" alt="">Name</a> • 0 seconds ago</p>
                             <p className={styles.paragraph}>Comment</p>
                             <div className={styles.actionsArea}>
-                                <button className={styles.noTextButton}>
-                                    <Icon icon="tabler:heart" />
+                                <button className={styles.tertiaryButton}>
+                                    <Icon className={styles.icon} icon="tabler:heart" />
                                     0
                                 </button>
-                                <button className={styles.noTextButton}>
+                                <button className={styles.tertiaryButton}>
                                     Reply
                                 </button>
                             </div>
-                            <button className={styles.noTextButton}>
+                            <button className={styles.tertiaryButton}>
                                 <Icon icon="ep:arrow-down-bold" />
                                 0 Replys
                             </button>

@@ -107,6 +107,16 @@
     align-items: start;
 }
 
+.warningContainer {
+    border: 1px solid #353535;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+}
+
 .commentContentArea {
     flex-direction: column;
 }
@@ -116,13 +126,30 @@
     gap: 1rem;
 }
 
-.thirdTitle {
+.tertiaryTitle {
     color: #fff;
     font-size: 1rem;
     font-weight: bold;
+    text-decoration: none;
 }
 
-.noTextButton {
+.tertiaryTitle:hover {
+    text-decoration: underline;
+}
+
+.filledStar {
+    color: #FC413A;
+}
+
+.unfilledStar {
+    color: #ababab;
+}
+
+.filledStar, .unfilledStar {
+    font-size: 1.25rem;
+}
+
+.tertiaryButton {
     align-items: center;
     background-color: transparent;
     border: none;
@@ -133,9 +160,11 @@
     font-size: 0.875rem;
 }
 
-.noTextButton:hover {
+.tertiaryButton:hover {
     color: #fff;
 }
+
+
 
 @media screen and (max-width: 480px) {
     .contentArea {
