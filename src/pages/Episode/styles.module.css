@@ -4,13 +4,25 @@
 }
 
 .contentArea {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    display: grid;
+    grid-gap: 3rem;
+    grid-template-areas: 'firstItem firstItem firstItem firstItem secondItem' 'thirdItem thirdItem thirdItem thirdItem secondItem';
     padding: 3rem;
 }
 
-.section {
+.heroSection {
+    grid-area: firstItem;
+}
+
+.episodesSection {
+    grid-area: secondItem;
+}
+
+.commentsSection {
+    grid-area: thirdItem;
+}
+
+.heroSection, .episodesSection, .commentsSection {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -21,8 +33,9 @@
     font-size: 2rem;
 }
 
-.label {
-    color: #fff;
+.cardImage {
+    aspect-ratio: 16/9;
+    width: 10.5rem;
 }
 
 .paragraph {
@@ -34,42 +47,6 @@
     align-items: center;
     display: flex;
     gap: 0.75rem;
-}
-
-.primaryButton {
-    background-color: #FC413A;
-    color: #000;
-}
-
-.primaryButton:hover {
-    background-color: #FD5953;
-}
-
-.secondaryButton {
-    background-color: transparent;
-    color: #FC413A;
-}
-
-.secondaryButton:hover {
-    color: #FD5953;
-}
-
-.primaryButton, .secondaryButton {
-    align-items: center;
-    border: 1px solid #FC413A;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    display: flex;
-    font-size: 0.875rem;
-    font-weight: bold;
-    gap: 0.5rem;
-    padding-block: 0.5rem;
-    padding-inline: 1rem;
-    text-decoration: none;
-}
-
-.primaryButton:hover, .secondaryButton:hover {
-    border: 1px solid #FD5953;
 }
 
 .icon {
@@ -123,11 +100,11 @@
     text-align: center;
 }
 
-.commentContentArea {
+.cardContentArea, .commentContentArea {
     flex-direction: column;
 }
 
-.commentContainer, .commentContentArea {
+.cardContainer, .cardContentArea, .commentContainer, .commentContentArea {
     display: flex;
     gap: 0.75rem;
 }
@@ -136,10 +113,13 @@
     color: #fff;
     font-size: 1rem;
     font-weight: bold;
+}
+
+.commentContentArea .tertiaryTitle {
     text-decoration: none;
 }
 
-.tertiaryTitle:hover {
+.commentContentArea .tertiaryTitle:hover {
     text-decoration: underline;
 }
 
@@ -170,11 +150,17 @@
     color: #fff;
 }
 
-
-
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 800px) {
     .contentArea {
+        display: flex;
+        flex-direction: column;
         gap: 1.5rem;
-        padding: 1.5rem;
+        padding-bottom: 1.5rem;
+        padding-inline: 0;
+        padding-top: 0;
+    }
+    
+    .heroSection .primaryTitle, .episodesSection, .commentsSection {
+        padding-inline: 1.5rem;
     }
 }

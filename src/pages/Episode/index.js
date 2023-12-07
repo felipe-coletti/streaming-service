@@ -13,12 +13,24 @@ const Episode = () => {
         <div className={styles.container}>
             <Header/>
             <div className={styles.contentArea}>
-                <section className={styles.section}>
-                    <video controls autoplay buffered poster="">
+                <section className={styles.heroSection}>
+                    <video controls autoPlay buffered="true" poster="">
                         <source src="" type="video/mp4" />
                     </video>
+                    <h1 className={styles.primaryTitle}>Name</h1>
                 </section>
-                <section className={styles.section}>
+                <section className={styles.episodesSection}>
+                    <h2 className={styles.secondaryTitle}>Episodes</h2>
+                    <div className={styles.sectionContent}>
+                        <a className={styles.cardContainer}>
+                            <img className={styles.cardImage} href="" alt=""/>
+                            <div className={styles.cardContentArea}>
+                                <h3 className={styles.tertiaryTitle}>Name</h3>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+                <section className={styles.commentsSection}>
                     <h2 className={styles.secondaryTitle}>0 Comments</h2>
                     <div className={styles.sectionContent}>
                         {isAuthenticated ? (
