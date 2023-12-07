@@ -38,6 +38,10 @@ const Serie = () => {
                         <h2 className={styles.secondaryTitle}>Episodes</h2>
                     </div>
                     <div className={styles.grid}>
+                        <a className={styles.card}>
+                            <img className={styles.cardImage} href="" alt=""/>
+                            <h3 className={styles.tertiaryTitle}>Name</h3>
+                        </a>
                     </div> 
                 </section>
                 <section className={styles.section}>

@@ -6,7 +6,7 @@
 .contentArea {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 3rem;
     padding: 3rem;
 }
 
@@ -19,10 +19,6 @@
 .primaryTitle {
     color: #fff;
     font-size: 2rem;
-}
-
-.label {
-    color: #fff;
 }
 
 .paragraph {
@@ -76,9 +72,34 @@
     font-size: 1.25rem;
 }
 
+.label {
+    color: #fff;
+}
+
 .secondaryTitle {
     color: #fff;
     font-size: 1.25rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 15rem));
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cardImage {
+    aspect-ratio: 16/9;
+}
+
+.tertiaryTitle {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .sectionContent {
@@ -133,14 +154,11 @@
     gap: 0.75rem;
 }
 
-.tertiaryTitle {
-    color: #fff;
-    font-size: 1rem;
-    font-weight: bold;
+.reviewContainer .tertiaryTitle {
     text-decoration: none;
 }
 
-.tertiaryTitle:hover {
+.reviewContainer .tertiaryTitle:hover {
     text-decoration: underline;
 }
 
