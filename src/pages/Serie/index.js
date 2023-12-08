@@ -27,10 +27,16 @@ const Serie = () => {
                                 Add to your list
                             </button>
                         </div>
-                        <label className={styles.label}>Rating <p className={styles.paragraph}>0+</p></label>
-                        <label className={styles.label}>Episodes <p className={styles.paragraph}>0</p></label>
-                        <label className={styles.label}>Seasons <p className={styles.paragraph}>0</p></label>
-                        <label className={styles.label}>Studio <p className={styles.paragraph}>Name</p></label>
+                    </div>
+                    <div className={styles.sectionContent}>
+                        <h3 className={styles.tertiaryTitle}>Rating</h3>
+                        <p className={styles.paragraph}>0+</p>
+                        <h3 className={styles.tertiaryTitle}>Episodes</h3>
+                        <p className={styles.paragraph}>0</p>
+                        <h3 className={styles.tertiaryTitle}>Seasons</h3>
+                        <p className={styles.paragraph}>0</p>
+                        <h3 className={styles.tertiaryTitle}>Studio</h3>
+                        <p className={styles.paragraph}>Name</p>
                     </div>
                 </section>
                 <section className={styles.section}>
@@ -38,8 +44,8 @@ const Serie = () => {
                         <h2 className={styles.secondaryTitle}>Episodes</h2>
                     </div>
                     <div className={styles.grid}>
-                        <a className={styles.card}>
-                            <img className={styles.cardImage} href="" alt=""/>
+                        <a className={styles.card} href="/series/undefined/episode/undefined">
+                            <img className={styles.cardImage} alt=""/>
                             <h3 className={styles.tertiaryTitle}>Name</h3>
                         </a>
                     </div> 
