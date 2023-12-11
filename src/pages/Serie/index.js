@@ -16,6 +16,7 @@ const Serie = () => {
                 <section className={styles.section}>
                     <div className={styles.sectionContent}>
                         <h1 className={styles.primaryTitle}>Name</h1>
+                        <p className={styles.paragraph}>Rating</p>
                         <p className={styles.paragraph}>Description</p>
                         <div className={styles.actionsArea}>
                             <button className={styles.primaryButton}>
@@ -29,8 +30,6 @@ const Serie = () => {
                         </div>
                     </div>
                     <div className={styles.sectionContent}>
-                        <h3 className={styles.tertiaryTitle}>Rating</h3>
-                        <p className={styles.paragraph}>0+</p>
                         <h3 className={styles.tertiaryTitle}>Episodes</h3>
                         <p className={styles.paragraph}>0</p>
                         <h3 className={styles.tertiaryTitle}>Seasons</h3>
