@@ -1,0 +1,99 @@
+.videoContainer {
+    aspect-ratio: 16/9;
+    position: relative;
+}
+
+.videoDisplay {
+    height: 100%;
+    width: 100%;
+}
+
+.startVideoButton {
+    display: flex;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mobileVideoControls {
+    display: none;
+    gap: 1rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.startVideoButton, .mainVideoButton {
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.videoControls {
+    bottom: 0;
+    display: none;
+    flex-direction: column;
+    left: 0;
+    padding-inline: 0.5rem;
+    position: absolute;
+    width: 100%;
+}
+
+.videoContainer:hover .videoControls {
+    display: flex;
+}
+
+.videoControlButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.videoActionsArea {
+    align-items: center;
+    display: flex;
+}
+
+.videoActionsArea .videoControlButton, .videoVolumeControl {
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.videoControlButton, .videoVolumeControl, .volumeButton {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.25rem;
+}
+
+.videoVolumeInput {
+    display: none;
+    width: 5rem;
+}
+
+.videoVolumeControl:hover .videoVolumeInput {
+    display: flex;
+}
+
+.videoControlText {
+    color: #fff;
+    font-size: 0.875rem;
+}
+
+@media screen and (max-width: 800px) {
+    .startVideoButton {
+        display: none;
+    }
+
+    .videoContainer:hover .mobileVideoControls {
+        display: flex;
+    }
+}

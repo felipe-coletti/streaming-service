@@ -1,17 +1,12 @@
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 import styles from "./styles.module.css";
 import Header from "../../components/Header";
 import { Icon } from '@iconify/react';
 import { useParams } from "react-router-dom";
+import VideoPlayer from "../../components/VideoPlayer";
 
 const Episode = () => {
     const { id } = useParams()
-
-    const [isStarted, setStarted] = useState(false)
-    const [isPaused, setPaused] = useState(true)
-    const [displayVolume, setDisplayVolume] = useState(0)
-    const [volume, setVolume] = useState(0)
-    const isMuted = displayVolume == 0
 
     const isAuthenticated = false
 
@@ -20,47 +15,7 @@ const Episode = () => {
             <Header/>
             <div className={styles.contentArea}>
                 <section className={styles.heroSection}>
-                    <div className={styles.videoContainer}>
-                        <video className={styles.videoDisplay} autoPlay buffered="true" poster="" muted={isMuted}>
-                            <source src="" type="video/mp4" />
-                            Unable to load video
-                        </video>
-                        {!isStarted && (
-                            <button className={styles.startVideoButton} onClick={() => {setStarted(true)}}>
-                                <Icon icon="ph:play-fill" />
-                            </button>
-                        )}
-                        <div className={styles.videoControls}>
-                            <input type="range" />
-                            <div className={styles.videoControlButtons}>
-                                <div className={styles.videoActionsArea}>
-                                    <button className={styles.videoControlButton} onClick={() => {setPaused(!isPaused)}}>
-                                        {isPaused ? (
-                                            <Icon icon="ph:play-fill" />
-                                        ) : (
-                                            <Icon icon="ph:pause-fill" />
-                                        )}
-                                    </button>
-                                    <button className={styles.videoControlButton}>
-                                        <Icon icon="ph:skip-forward-fill" />
-                                    </button>
-                                    <div className={styles.videoActionsArea}>
-                                        <button className={styles.videoControlButton} onClick={() => {displayVolume > 0 ? (setDisplayVolume(0)) : (setDisplayVolume(volume))}}>
-                                            {displayVolume <= 0 ? (
-                                                <Icon icon="ph:speaker-simple-slash-fill" />
-                                            ) : (
-                                                <Icon icon="ph:speaker-simple-high-fill" />
-                                            )}
-                                        </button>
-                                        <input className={styles.videoVolumeInput} type="range" value={displayVolume} onChange={(e) => {setDisplayVolume(e.target.value)}} onClick={(e) => {e.target.value > 0 && (setVolume(e.target.value))}} />
-                                    </div>
-                                </div>
-                                <div className={styles.videoActionsArea}>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <VideoPlayer/>
                     <h1 className={styles.primaryTitle}>Name</h1>
                 </section>
                 <section className={styles.episodesSection}>
