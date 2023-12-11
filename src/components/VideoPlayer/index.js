@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 
 const VideoPlayer = () => {
     const [isStarted, setStarted] = useState(false)
-    const [isPaused, setPaused] = useState(true)
+    const [isPaused, setPaused] = useState(isStarted ? false : true)
     const [displayVolume, setDisplayVolume] = useState(100)
     const [volume, setVolume] = useState(100)
     const isMuted = displayVolume === 0
@@ -20,12 +20,12 @@ const VideoPlayer = () => {
 
     return (
         <div className={styles.videoContainer}>
-            <video className={styles.videoDisplay} autoPlay buffered="true" poster="" muted={isMuted}>
+            <video className={styles.videoDisplay} autoPlay={isStarted} buffered="true" poster="" muted={isMuted} onClick={() => {setPaused(!isPaused); !isStarted && setStarted(true)}}>
                 <source src="" type="video/mp4" />
                 Unable to load video
             </video>
             {!isStarted && (
-                <button className={styles.startVideoButton} onClick={() => {setStarted(true)}}>
+                <button className={styles.startVideoButton} onClick={() => {setStarted(true); setPaused(false)}}>
                     <Icon icon="ph:play-fill" />
                 </button>
             )}
@@ -48,7 +48,7 @@ const VideoPlayer = () => {
                 <input type="range" />
                 <div className={styles.videoControlButtons}>
                     <div className={styles.videoActionsArea}>
-                        <button className={styles.videoControlButton} onClick={() => {setPaused(!isPaused)}}>
+                        <button className={styles.videoControlButton} onClick={() => {setPaused(!isPaused); !isStarted && setStarted(true)}}>
                             {isPaused ? (
                                 <Icon icon="ph:play-fill" />
                             ) : (
