@@ -16,7 +16,7 @@ const Episode = () => {
             <div className={styles.contentArea}>
                 <section className={styles.heroSection}>
                     <VideoPlayer/>
-                    <h1 className={styles.primaryTitle}>Name</h1>
+                    <h1 className={styles.primaryTitle}>Serie name | Episode number - Episode name</h1>
                 </section>
                 <section className={styles.episodesSection}>
                     <h2 className={styles.secondaryTitle}>Episodes</h2>
