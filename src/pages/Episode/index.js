@@ -16,7 +16,7 @@ const Episode = () => {
             <div className={styles.contentArea}>
                 <section className={styles.heroSection}>
                     <VideoPlayer/>
-                    <h1 className={styles.primaryTitle}>Serie name | Episode number - Episode name</h1>
+                    <h1 className={styles.primaryTitle}>Serie name Season number | Episode number - Episode name</h1>
                 </section>
                 <section className={styles.episodesSection}>
                     <h2 className={styles.secondaryTitle}>Episodes</h2>
@@ -55,7 +55,7 @@ const Episode = () => {
                                         0
                                     </button>
                                     <button className={styles.tertiaryButton}>
-                                        <Icon className={styles.icon} icon="ph:share-fat-bold" />
+                                        <Icon className={styles.icon} icon="ion:arrow-undo-outline" />
                                         Reply
                                     </button>
                                 </div>
