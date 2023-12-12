@@ -30,27 +30,27 @@ const Serie = () => {
                         </div>
                     </div>
                     <div className={styles.sectionContent}>
-                        <h3 className={styles.tertiaryTitle}>Episodes</h3>
+                        <h4 className={styles.quaternaryTitle}>Episodes</h4>
                         <p className={styles.paragraph}>0</p>
-                        <h3 className={styles.tertiaryTitle}>Seasons</h3>
+                        <h4 className={styles.quaternaryTitle}>Seasons</h4>
                         <p className={styles.paragraph}>0</p>
-                        <h3 className={styles.tertiaryTitle}>Studio</h3>
+                        <h4 className={styles.quaternaryTitle}>Studio</h4>
                         <p className={styles.paragraph}>Name</p>
                     </div>
                 </section>
                 <section className={styles.section}>
                     <div>
-                        <h2 className={styles.secondaryTitle}>Episodes</h2>
+                        <h3 className={styles.tertiaryTitle}>Episodes</h3>
                     </div>
                     <div className={styles.grid}>
                         <a className={styles.card} href="/series/undefined/episode/undefined">
                             <img className={styles.cardImage} alt=""/>
-                            <h3 className={styles.tertiaryTitle}>Name</h3>
+                            <h4 className={styles.quaternaryTitle}>Name</h4>
                         </a>
                     </div> 
                 </section>
                 <section className={styles.section}>
-                    <h2 className={styles.secondaryTitle}>0 Reviews</h2>
+                    <h3 className={styles.tertiaryTitle}>0 Reviews</h3>
                     <div className={styles.sectionContent}>
                         {isAuthenticated ? (
                             <div className={styles.reviewContainer}>
@@ -60,14 +60,14 @@ const Serie = () => {
                             </div>
                         ) : (
                             <div className={styles.warningContainer}>
-                                <h1 className={styles.primaryTitle}>Account required</h1>
+                                <h2 className={styles.secondaryTitle}>Account required</h2>
                                 <p className={styles.paragraph}>You need to be logged in to an account to do this.</p>
                             </div>
                         )}
                         <div className={styles.reviewContainer}>
                             <img className={styles.profileImage} alt=""/>
                             <div className={styles.reviewContentArea}>
-                                <p className={styles.paragraph}><a className={styles.tertiaryTitle} href="" alt="">Name</a> • January 1st, 0000</p>
+                                <p className={styles.paragraph}><a className={styles.quaternaryTitle} href="" alt="">Name</a> • January 1st, 0000</p>
                                 <div className={styles.actionsArea}>
                                     <div className={styles.filledStar}><Icon icon="ion:star" /></div>
                                     <div className={styles.filledStar}><Icon icon="ion:star" /></div>
