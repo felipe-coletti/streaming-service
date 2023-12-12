@@ -10,6 +10,10 @@ const VideoPlayer = () => {
     const isMuted = displayVolume === 0
     const [isFullscreen, setFullscreen] = useState(false)
 
+    const handlePauseOrResume = () => {
+        setPaused(!isPaused)
+    }
+
     const handleFullscreen = () => {
         if (!isFullscreen) {
             
@@ -18,22 +22,28 @@ const VideoPlayer = () => {
         }
     }
 
+    const handleFocus = () => {
+        
+    }
+
     return (
-        <div className={styles.videoContainer}>
-            <video className={styles.videoDisplay} autoPlay={isStarted} buffered="true" poster="" muted={isMuted} onClick={() => {setPaused(!isPaused); !isStarted && setStarted(true)}}>
+        <div className={isPaused ? styles.pausedVideoContainer : styles.notPausedVideoContainer} onFocus={handleFocus}>
+            <video className={styles.videoDisplay} autoPlay={isStarted} buffered="true" poster="" muted={isMuted}>
                 <source src="" type="video/mp4" />
                 Unable to load video
             </video>
-            {!isStarted && (
-                <button className={styles.startVideoButton} onClick={() => {setStarted(true); setPaused(false)}}>
-                    <Icon icon="ph:play-fill" />
-                </button>
-            )}
+            <div className={styles.floatingVideoControls} onClick={() => {handlePauseOrResume(); !isStarted && setStarted(true)}}>
+                {!isStarted && (
+                    <button className={styles.mainVideoButton} onClick={() => {setStarted(true); setPaused(false)}}>
+                        <Icon icon="ph:play-fill" />
+                    </button>
+                )}
+            </div>
             <div className={styles.mobileVideoControls}>
                 <button className={styles.videoControlButton}>
                     <Icon icon="ph:arrow-counter-clockwise-bold" />
                 </button>
-                <button className={styles.mainVideoButton} onClick={() => {setPaused(!isPaused)}}>
+                <button className={styles.mainVideoButton} onClick={() => {handlePauseOrResume()}}>
                     {isPaused ? (
                         <Icon icon="ph:play-fill" />
                     ) : (
@@ -48,7 +58,7 @@ const VideoPlayer = () => {
                 <input type="range" />
                 <div className={styles.videoControlButtons}>
                     <div className={styles.videoActionsArea}>
-                        <button className={styles.videoControlButton} onClick={() => {setPaused(!isPaused); !isStarted && setStarted(true)}}>
+                        <button className={styles.videoControlButton} onClick={() => {handlePauseOrResume(); !isStarted && setStarted(true)}}>
                             {isPaused ? (
                                 <Icon icon="ph:play-fill" />
                             ) : (
