@@ -6,6 +6,7 @@ import ResetPassword from "../pages/ResetPassword";
 import Serie from "../pages/Serie";
 import Episode from "../pages/Episode";
 import NotFound from "../pages/NotFound";
+import Category from "../pages/Category";
 
 const PagesRoutes = () => {
     return(
@@ -15,6 +16,7 @@ const PagesRoutes = () => {
                 <Route path="/sign-up" element={<Signup/>}/>
                 <Route path="/sign-in" element={<Signin/>}/>
                 <Route path="/reset-password" element={<ResetPassword/>}/>
+                <Route path="/categories/:id" element={<Category/>}/>
                 <Route path="/series/:id" element={<Serie/>}/>
                 <Route path="/series/:id/episode/:id" element={<Episode/>}/>
                 <Route path="*" element={<NotFound/>}/>
