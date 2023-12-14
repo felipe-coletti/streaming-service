@@ -91,15 +91,16 @@
 
 .card {
     display: flex;
+    flex: none;
     flex-direction: column;
     gap: 0.5rem;
     scroll-snap-align: start;
     text-decoration: none;
+    width: 10rem;
 }
 
-.image {
-    height: 14rem;
-    width: 10rem;
+.cardImage {
+    aspect-ratio: 9.8/13.9;
 }
 
 .secondaryTitle {

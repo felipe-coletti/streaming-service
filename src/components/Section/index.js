@@ -29,7 +29,7 @@ const Section = ({title, data}) => {
         <div className={styles.container}>
             <div className={styles.titleArea}>
                 <h1 className={styles.primaryTitle}>{title}</h1>
-                <a className={styles.link} href="">View all <Icon icon="ep:arrow-right-bold" /></a>
+                <a className={styles.link} href="/categories/undefined">View all</a>
             </div>
             <div className={styles.carouselContainer}>
                 {scrollPosition !== 0 && (
@@ -45,7 +45,7 @@ const Section = ({title, data}) => {
                 <div className={styles.carousel} ref={carousel}>
                     {data.map((item, i) => (
                         <a className={styles.card} href={`/series/${item.id}`} key={i}>
-                            <img className={styles.image} src="" alt={item.name}/>
+                            <img className={styles.cardImage} src="" alt={item.name}/>
                             <h2 className={styles.secondaryTitle}>{item.name}</h2>
                         </a>
                     ))}
