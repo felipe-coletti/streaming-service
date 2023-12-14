@@ -47,10 +47,16 @@ const Serie = () => {
                             <img className={styles.cardImage} alt=""/>
                             <h4 className={styles.quaternaryTitle}>Name</h4>
                         </a>
-                    </div> 
+                    </div>
                 </section>
                 <section className={styles.section}>
-                    <h3 className={styles.tertiaryTitle}>0 Reviews</h3>
+                    <div className={styles.titleArea}>
+                        <h3 className={styles.tertiaryTitle}>0 reviews</h3>
+                        <button className={styles.tertiaryButton}>
+                            <Icon className={styles.icon} icon="solar:list-bold" />
+                            Sort by
+                        </button>
+                    </div>
                     <div className={styles.sectionContent}>
                         {isAuthenticated ? (
                             <div className={styles.reviewContainer}>

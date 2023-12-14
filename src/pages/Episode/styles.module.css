@@ -53,6 +53,11 @@
     font-size: 1.25rem;
 }
 
+.titleArea {
+    display: flex;
+    justify-content: space-between;
+}
+
 .secondaryTitle {
     color: #fff;
     font-size: 1.25rem;

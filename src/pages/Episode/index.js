@@ -30,7 +30,13 @@ const Episode = () => {
                     </div>
                 </section>
                 <section className={styles.commentsSection}>
-                    <h2 className={styles.secondaryTitle}>0 Comments</h2>
+                    <div className={styles.titleArea}>
+                        <h2 className={styles.secondaryTitle}>0 comments</h2>
+                        <button className={styles.tertiaryButton}>
+                            <Icon className={styles.icon} icon="solar:list-bold" />
+                            Sort by
+                        </button>
+                    </div>
                     <div className={styles.sectionContent}>
                         {isAuthenticated ? (
                             <div className={styles.commentContainer}>
@@ -60,7 +66,7 @@ const Episode = () => {
                                     </button>
                                 </div>
                                 <button className={styles.tertiaryButton}>
-                                    View 0 replys
+                                    View 0 replies
                                     <Icon icon="ep:arrow-down-bold" />
                                 </button>
                             </div>

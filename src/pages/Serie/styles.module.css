@@ -104,12 +104,16 @@
     font-weight: bold;
 }
 
+.titleArea {
+    display: flex;
+    justify-content: space-between;
+}
+
 .sectionContent {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
-
 
 .profileImage {
     aspect-ratio: 1/1;
