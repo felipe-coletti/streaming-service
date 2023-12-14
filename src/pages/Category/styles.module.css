@@ -1,0 +1,68 @@
+.container {
+    background-color: #000;
+    min-height: 100vh;
+}
+
+.contentArea {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 3rem;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.titleArea {
+    display: flex;
+    justify-content: space-between;
+}
+
+.primaryTitle {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.primaryButton {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: #ababab;
+    cursor: pointer;
+    display: flex;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.primaryButton:hover {
+    color: #fff;
+}
+
+.icon {
+    font-size: 1.25rem;
+}
+
+.grid {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.cardImage {
+    aspect-ratio: 9.8/13.9;
+}
+
+.secondaryTitle {
+    color: #fff;
+    font-size: 1rem;
+}
