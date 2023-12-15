@@ -49,9 +49,11 @@ const Carousel = ({ data }) => {
     }
 
     const paginate = (i) => {
-        setCurrentPage(i)
-        carousel.current.scrollLeft = card.current.offsetWidth * i
-        setTimeProgress(0)
+        if (i != currentPage) {
+            setCurrentPage(i)
+            carousel.current.scrollLeft = card.current.offsetWidth * i
+            setTimeProgress(0)
+        }
     }
 
     return (
