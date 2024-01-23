@@ -120,6 +120,10 @@
     font-weight: bold;
 }
 
+.commentContentArea {
+    width: 100%;
+}
+
 .commentContentArea .tertiaryTitle {
     text-decoration: none;
 }

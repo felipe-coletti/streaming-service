@@ -53,7 +53,12 @@ const Episode = () => {
                         <div className={styles.commentContainer}>
                             <img className={styles.profileImage} alt=""/>
                             <div className={styles.commentContentArea}>
-                                <p className={styles.paragraph}><a className={styles.tertiaryTitle} href="" alt="">Name</a> • 0 seconds ago</p>
+                                <div className={styles.titleArea}>
+                                    <p className={styles.paragraph}><a className={styles.tertiaryTitle} href="" alt="">Name</a> • 0 seconds ago</p>
+                                    <button className={styles.tertiaryButton}>
+                                        <Icon className={styles.icon} icon="ph:dots-three-vertical-bold" />
+                                    </button>
+                                </div>
                                 <p className={styles.paragraph}>Comment</p>
                                 <div className={styles.actionsArea}>
                                     <button className={styles.tertiaryButton}>

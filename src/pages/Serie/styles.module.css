@@ -1,5 +1,5 @@
 .container {
-    background-color: #000;
+    background-color: var(--primary-background-color);
     min-height: 100vh;
 }
 
@@ -26,13 +26,19 @@
     font-size: 0.875rem;
 }
 
+.starsArea {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+}
+
 .actionsArea {
     align-items: center;
     display: flex;
     gap: 0.75rem;
 }
 
-.primaryButton {
+.primaryButton, .tag {
     background-color: #FC413A;
     color: #000;
 }
@@ -64,12 +70,30 @@
     text-decoration: none;
 }
 
-.primaryButton:hover, .secondaryButton:hover {
+.primaryButton:hover, .secondaryButton:hover, .tag:hover {
     border: 1px solid #FD5953;
 }
 
 .icon {
     font-size: 1.25rem;
+}
+
+.tag {
+    border: 1px solid #FC413A;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: bold;
+    padding-block: 0.25rem;
+    padding-inline: 0.5rem;
+    text-decoration: none;
+}
+
+.dataGrid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 1rem;
 }
 
 .label {
@@ -158,6 +182,7 @@
 
 .reviewContentArea {
     flex-direction: column;
+    width: 100%;
 }
 
 .reviewContainer, .reviewContentArea {
@@ -173,15 +198,19 @@
     text-decoration: underline;
 }
 
-.filledStar {
+.filledStar, .changeableFilledStar {
     color: #FC413A;
 }
 
-.unfilledStar {
+.unfilledStar, .changeableUnfilledStar {
     color: #ababab;
 }
 
-.filledStar, .unfilledStar {
+.changeableFilledStar, .changeableUnfilledStar {
+    cursor: pointer;
+}
+
+.filledStar, .unfilledStar, .changeableFilledStar, .changeableUnfilledStar {
     font-size: 1.25rem;
 }
 
@@ -199,8 +228,6 @@
 .tertiaryButton:hover {
     color: #fff;
 }
-
-
 
 @media screen and (max-width: 480px) {
     .contentArea {

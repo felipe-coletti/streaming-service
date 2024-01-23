@@ -63,7 +63,7 @@
 }
   
 .pagePill:hover {
-    background-color: #fff;
+    background-color: #ababab;
 }
 
 .selectedPagePill {
@@ -71,7 +71,7 @@
 }
 
 .pagePill, .selectedPagePill {
-    background-color: #ababab;
+    background-color: #353535;
     border-radius: 0.25rem;
     cursor: pointer;
     height: 0.5rem;
@@ -81,7 +81,7 @@
 }
 
 .pagePillProgress {
-    background-color: #FC413A;
+    background-color: #fff;
     border-radius: 0.25rem;
     height: 100%;
 }

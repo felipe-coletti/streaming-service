@@ -22,7 +22,7 @@
 .mobileVideoControls {
     align-items: center;
     display: none;
-    gap: 1rem;
+    gap: 3rem;
     left: 50%;
     position: absolute;
     top: 50%;

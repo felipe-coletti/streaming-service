@@ -16,7 +16,6 @@ const Section = ({title, data}) => {
         const newPosition = carousel.current.scrollLeft - carousel.current.offsetWidth
         setScrollPosition(newPosition >= 0 ? newPosition : 0)
         carousel.current.scrollLeft -= carousel.current.offsetWidth
-        
     }
 
     const handleRight = () => {
