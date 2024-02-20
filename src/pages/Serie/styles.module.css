@@ -80,7 +80,7 @@
 
 .tag {
     border: 1px solid #FC413A;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     cursor: pointer;
     font-size: 0.875rem;
     font-weight: bold;
