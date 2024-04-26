@@ -1,0 +1,32 @@
+.primaryButton {
+    background-color: #FC413A;
+    color: #000;
+}
+
+.primaryButton:hover {
+    background-color: #FD5953;
+}
+
+.secondaryButton {
+    background-color: transparent;
+    color: #FC413A;
+}
+
+.secondaryButton:hover {
+    color: #FD5953;
+}
+
+.secondaryButton, .primaryButton {
+    border: 1px solid #FC413A;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: bold;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    text-decoration: none;
+}
+
+.secondaryButton:hover, .primaryButton:hover {
+    border: 1px solid #FD5953;
+}
