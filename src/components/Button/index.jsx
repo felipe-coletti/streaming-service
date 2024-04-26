@@ -10,7 +10,7 @@ const Button = (href, isPrimary, children, ...rest) => {
             {children}
         </button>
     :
-        <a className={isPrimary ? styles.primaryButton : styles.secondaryButton} onClick={() => window.open(href)} {...rest}>
+        <a className={isPrimary ? styles.primaryButton : styles.secondaryButton} href={href} {...rest}>
             {children}
         </a>
     }
