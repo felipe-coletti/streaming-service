@@ -3,30 +3,22 @@
     color: #000;
 }
 
-.primaryButton:hover {
-    background-color: #FD5953;
-}
-
 .secondaryButton {
     background-color: transparent;
     color: #FC413A;
 }
 
-.secondaryButton:hover {
-    color: #FD5953;
-}
-
 .secondaryButton, .primaryButton {
+    align-items: center;
     border: 1px solid #FC413A;
     border-radius: 0.5rem;
     cursor: pointer;
+    display: flex;
     font-size: 0.875rem;
     font-weight: bold;
+    gap: 0.5rem;
+    justify-content: center;
     padding-block: 0.5rem;
     padding-inline: 1rem;
     text-decoration: none;
-}
-
-.secondaryButton:hover, .primaryButton:hover {
-    border: 1px solid #FD5953;
 }
