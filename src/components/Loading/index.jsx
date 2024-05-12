@@ -1,6 +1,5 @@
-import React from "react";
-import styles from "./styles.module.css";
-import { Icon } from '@iconify/react';
+import styles from './styles.module.css'
+import { Icon } from '@iconify/react'
 
 const Loading = () => {
     return (

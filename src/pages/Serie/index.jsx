@@ -3,6 +3,8 @@ import styles from "./styles.module.css";
 import Header from "../../components/Header";
 import { Icon } from '@iconify/react';
 import { useParams } from "react-router-dom";
+import Button from '../../components/Button'
+import Tag from '../../components/Tag'
 
 const Serie = () => {
     const { id } = useParams()
@@ -48,18 +50,18 @@ const Serie = () => {
                         </div>
                         <p className={styles.paragraph}>Description</p>
                         <div className={styles.actionsArea}>
-                            <button className={styles.primaryButton}>
+                            <Button variant='primary'>
                                 <Icon className={styles.icon} icon="ph:play-fill" />
                                 Watch
-                            </button>
-                            <button className={styles.secondaryButton}>
+                            </Button>
+                            <Button variant='secondary'>
                                 <Icon className={styles.icon} icon="octicon:plus-16" />
                                 Add to your list
-                            </button>
+                            </Button>
                         </div>
                     </div>
                     <div className={styles.actionsArea}>
-                        <p className={styles.tag}>Romance</p>
+                        <Tag>Tag</Tag>
                     </div>
                     <div className={styles.dataGrid}>
                         <h4 className={styles.quaternaryTitle}>Episodes</h4>
@@ -86,10 +88,10 @@ const Serie = () => {
                 <section className={styles.section}>
                     <div className={styles.titleArea}>
                         <h3 className={styles.tertiaryTitle}>0 reviews</h3>
-                        <button className={styles.tertiaryButton}>
+                        <Button variant='tertiary'>
                             <Icon className={styles.icon} icon="solar:list-bold" />
                             Sort by
-                        </button>
+                        </Button>
                     </div>
                     <div className={styles.sectionContent}>
                         {isAuthenticated ? (
@@ -102,7 +104,7 @@ const Serie = () => {
                                     <input className={styles.input} placeholder="Write a title for the review"/>
                                     <input className={styles.input} placeholder="Write a review"/>
                                 </div>
-                                <button className={styles.primaryButton}>Send</button>
+                                <Button variant='primary'>Send</Button>
                             </div>
                         ) : (
                             <div className={styles.warningContainer}>
@@ -115,9 +117,9 @@ const Serie = () => {
                             <div className={styles.reviewContentArea}>
                                 <div className={styles.titleArea}>
                                     <p className={styles.paragraph}><a className={styles.quaternaryTitle} href="" alt="">Name</a> • January 1st, 0000</p>
-                                    <button className={styles.tertiaryButton} title="Options">
+                                    <Button variant='tertiary' title="Options">
                                         <Icon className={styles.icon} icon="ph:dots-three-vertical-bold" />
-                                    </button>
+                                    </Button>
                                 </div>
                                 <div className={styles.starsArea}>
                                     {handleReviewStars(4)}
@@ -126,8 +128,8 @@ const Serie = () => {
                                 <p className={styles.paragraph}>Review</p>
                                 <div className={styles.actionsArea}>
                                     <p className={styles.paragraph}>0 out of 0 people found this review helpful. Did you find this review helpful?</p>
-                                    <button className={styles.tertiaryButton}>Yes</button>
-                                    <button className={styles.tertiaryButton}>No</button>
+                                    <Button variant='tertiary'>Yes</Button>
+                                    <Button variant='tertiary'>No</Button>
                                 </div>
                             </div>
                         </div>

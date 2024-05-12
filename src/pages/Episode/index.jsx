@@ -1,9 +1,9 @@
-import { React, useState, useRef } from "react";
-import styles from "./styles.module.css";
-import Header from "../../components/Header";
-import { Icon } from '@iconify/react';
-import { useParams } from "react-router-dom";
-import VideoPlayer from "../../components/VideoPlayer";
+import styles from './styles.module.css'
+import Header from '../../components/Header'
+import { Icon } from '@iconify/react'
+import { useParams } from 'react-router-dom'
+import VideoPlayer from '../../components/VideoPlayer'
+import Button from '../../components/Button'
 
 const Episode = () => {
     const { id } = useParams()
@@ -32,17 +32,17 @@ const Episode = () => {
                 <section className={styles.commentsSection}>
                     <div className={styles.titleArea}>
                         <h2 className={styles.secondaryTitle}>0 comments</h2>
-                        <button className={styles.tertiaryButton}>
+                        <Button variant='tertiary'>
                             <Icon className={styles.icon} icon="solar:list-bold" />
                             Sort by
-                        </button>
+                        </Button>
                     </div>
                     <div className={styles.sectionContent}>
                         {isAuthenticated ? (
                             <div className={styles.commentContainer}>
                                 <img className={styles.profileImage} alt=""/>
                                 <input className={styles.input} placeholder="Write a comment"/>
-                                <button className={styles.primaryButton}>Send</button>
+                                <Button variant='primary'>end</Button>
                             </div>
                         ) : (
                             <div className={styles.warningContainer}>
@@ -55,25 +55,25 @@ const Episode = () => {
                             <div className={styles.commentContentArea}>
                                 <div className={styles.titleArea}>
                                     <p className={styles.paragraph}><a className={styles.tertiaryTitle} href="" alt="">Name</a> • 0 seconds ago</p>
-                                    <button className={styles.tertiaryButton}>
+                                    <Button variant='tertiary'>
                                         <Icon className={styles.icon} icon="ph:dots-three-vertical-bold" />
-                                    </button>
+                                    </Button>
                                 </div>
                                 <p className={styles.paragraph}>Comment</p>
                                 <div className={styles.actionsArea}>
-                                    <button className={styles.tertiaryButton}>
+                                    <Button variant='tertiary'>
                                         <Icon className={styles.icon} icon="tabler:heart" />
                                         0
-                                    </button>
-                                    <button className={styles.tertiaryButton}>
+                                    </Button>
+                                    <Button variant='tertiary'>
                                         <Icon className={styles.icon} icon="ion:arrow-undo-outline" />
                                         Reply
-                                    </button>
+                                    </Button>
                                 </div>
-                                <button className={styles.tertiaryButton}>
+                                <Button variant='tertiary'>
                                     View 0 replies
                                     <Icon icon="ep:arrow-down-bold" />
-                                </button>
+                                </Button>
                             </div>
                         </div>
                     </div>

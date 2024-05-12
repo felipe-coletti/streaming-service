@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
+import Button from "../../components/Button";
 
 const ResetPassword = () => {
     return(
@@ -11,7 +12,7 @@ const ResetPassword = () => {
                         <label htmlFor="email-input" className={styles.label}>E-mail</label>
                         <input id="email-input" className={styles.input} type="text" required />
                     </div>
-                    <button className={styles.primaryButton} type="submit">Send</button>
+                    <Button type="submit">Send</Button>
                 </div>
             </div>
         </div>

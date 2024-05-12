@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./styles.module.css";
+import styles from './styles.module.css'
+import Button from '../../components/Button'
 
 const Signin = () => {
     return(
@@ -18,7 +18,7 @@ const Signin = () => {
                     <div>
                         <a className={styles.link} href="/reset-password">Forget password?</a>
                     </div>
-                    <button className={styles.primaryButton} type="submit">Sign in</button>
+                    <Button type="submit">Sign in</Button>
                 </div>
                 <p className={styles.paragraph}>Don't have an account? <a className={styles.link} href="/sign-up">Sign up</a></p>
             </div>

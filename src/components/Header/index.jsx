@@ -1,17 +1,17 @@
-import React from "react";
-import styles from "./styles.module.css";
-import { Icon } from '@iconify/react';
+import styles from './styles.module.css'
+import Button from '../Button'
+import { Icon } from '@iconify/react'
 
 const Header = () => {
     return(
         <div className={styles.container}>
             <a className={styles.logo} href="/">Name</a>
             <div className={styles.actionsArea}>
-                <button className={styles.noTextButton} title="Search">
+                <Button variant='tertiary' title="Search">
                     <Icon icon="octicon:search-16" />
-                </button>
-                <a className={styles.secondaryButton} href="/sign-in">Sign in</a>
-                <a className={styles.primaryButton} href="/sign-up">Sign up</a>
+                </Button>
+                <Button variant='secondary' href='/sign-in'>Sign in</Button>
+                <Button href='/sign-up'>Sign up</Button>
             </div>
         </div>
     )

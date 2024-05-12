@@ -1,0 +1,12 @@
+.tag {
+    background-color: var(--highlight-color);
+    border: 1px solid var(--highlight-color);
+    border-radius: 0.5rem;
+    color: var(--primary-background-color);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: bold;
+    padding-block: 0.25rem;
+    padding-inline: 0.5rem;
+    text-decoration: none;
+}

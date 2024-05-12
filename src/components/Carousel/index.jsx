@@ -1,6 +1,7 @@
-import { React, useEffect, useRef, useState } from "react";
-import styles from "./styles.module.css";
-import { Icon } from '@iconify/react';
+import { useEffect, useRef, useState } from 'react'
+import styles from './styles.module.css'
+import { Icon } from '@iconify/react'
+import Button from '../Button'
 
 const Carousel = ({ data }) => {
     const carousel = useRef(null)
@@ -71,14 +72,14 @@ const Carousel = ({ data }) => {
                         <p className={styles.paragraph}>Rating</p>
                         <p className={styles.paragraph}>Description</p>
                         <div className={styles.actionsArea}>
-                            <button className={styles.primaryButton}>
+                            <Button>
                                 <Icon className={styles.icon} icon="ph:play-fill" />
                                 Watch
-                            </button>
-                            <button className={styles.secondaryButton}>
+                            </Button>
+                            <Button variant='secondary'>
                                 <Icon className={styles.icon} icon="octicon:plus-16" />
                                 Add to your list
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 ))}

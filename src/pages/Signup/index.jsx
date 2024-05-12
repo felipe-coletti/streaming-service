@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./styles.module.css";
+import styles from './styles.module.css'
+import Button from '../../components/Button'
 
 const Signup = () => {
     return(
@@ -20,7 +20,7 @@ const Signup = () => {
                         <input id="password-input" className={styles.input} type="password" required />
                     </div>
                     <p className={styles.paragraph}>By registering, you agree to our <a className={styles.link} href="">Terms of Use</a> and our <a className={styles.link} href="">Privacy Policy</a>, including the <a className={styles.link} href="">Use of Cookies</a>.</p>
-                    <button className={styles.primaryButton} type="submit">Sign up</button>
+                    <Button type="submit">Sign up</Button>
                 </div>
                 <p className={styles.paragraph}>Already have an account? <a className={styles.link} href="/sign-in">Sign in</a></p>
             </div>

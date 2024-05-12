@@ -1,24 +1,44 @@
 .primaryButton {
-    background-color: #FC413A;
-    color: #000;
+    background-color: var(--highlight-color);
+    color: var(--primary-background-color);
 }
 
 .secondaryButton {
-    background-color: transparent;
-    color: #FC413A;
+    color: var(--highlight-color);
 }
 
 .secondaryButton, .primaryButton {
-    align-items: center;
-    border: 1px solid #FC413A;
+    border: 1px solid var(--highlight-color);
     border-radius: 0.5rem;
+    font-weight: bold;
+    gap: 0.5rem;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+}
+
+.tertiaryButton {
+    border: none;
+    color: var(--secondary-text-color);
+    gap: 0.25rem;
+}
+
+.tertiaryButton:hover {
+    color: var(--primary-text-color);
+}
+
+.secondaryButton, .tertiaryButton {
+    background-color: transparent;
+}
+
+.primaryButton, .secondaryButton, .tertiaryButton {
+    align-items: center;
     cursor: pointer;
     display: flex;
     font-size: 0.875rem;
-    font-weight: bold;
-    gap: 0.5rem;
     justify-content: center;
-    padding-block: 0.5rem;
-    padding-inline: 1rem;
     text-decoration: none;
+}
+
+.primaryButton svg, .secondaryButton svg, .tertiaryButton svg {
+    font-size: 1.25rem;
 }
