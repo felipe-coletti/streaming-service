@@ -3,15 +3,18 @@ import styles from './styles.module.css'
 const Button = ({ variant='primary', href, children, ...rest }) => {
     let type
 
-    if (variant == 'primary') {
-        type = styles.primaryButton
-    } else if (variant == 'secondary') {
-        type = styles.secondaryButton
-    } else if (variant == 'tertiary') {
-        type = styles.tertiaryButton
+    switch (variant) {
+        case 'primary':
+            type = styles.primaryButton
+            break;
+        case 'secondary':
+            type = styles.secondaryButton
+            break;
+        case 'tertiary':
+            type = styles.tertiaryButton
     }
 
-    return(href == null ?
+    return (href == null ?
         <button className={type} {...rest}>
             {children}
         </button>
