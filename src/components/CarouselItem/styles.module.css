@@ -1,0 +1,6 @@
+.carouselItem {
+    display: flex;
+    flex: none;
+    height: 100%;
+    width: 100%;
+}

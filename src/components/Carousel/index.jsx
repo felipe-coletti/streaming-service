@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { Children, useEffect, useRef, useState, useLayoutEffect } from 'react'
 import styles from './styles.module.css'
 import { Icon } from '@iconify/react'
-import Button from '../Button'
 
-const Carousel = ({ data }) => {
+const Carousel = ({ autoPlay=false, controls=false, children }) => {
     const carousel = useRef(null)
-    const card = useRef(null)
+
+    const carouselChildren = Children.count(children)
+    const clonedChild = Children.toArray(children)[0]
 
     const [currentPage, setCurrentPage] = useState(0)
     const [isPaused, setPaused] = useState(false)
@@ -14,36 +15,53 @@ const Carousel = ({ data }) => {
     const pagePeriod = 10000
 
     useEffect(() => {
-        setTimeout(function() {
-            if (!isPaused) {
-                setTimeProgress(timeProgress + 1)
+        if (autoPlay) {
+            setTimeout(function() {
+                if (!isPaused) {
+                    setTimeProgress(timeProgress + 1)
 
-                if (timeProgress === 100) {
-                    handleRight()
+                    if (timeProgress === 100) {
+                        handleRight()
+                    }
                 }
-            }
-        }, pagePeriod / 100)
+            }, pagePeriod / 100)
+        }
     })
 
+    const [width, setWidth] = useState(0)
+
+    useLayoutEffect(() => {
+        setWidth(carousel.current.offsetWidth)
+    }, [])
+
+    const [ms, setMs] = useState(500)
+
+    //const ms = currentPage != carouselChildren && currentPage != 0 ? 500 : 0
+    const position = currentPage * width * -1
+
     const handleLeft = () => {
-        if (currentPage > 0) {
+        if (currentPage === 0) {
+            setMs(0)
+            setCurrentPage(carouselChildren)
+            setMs(500)
             setCurrentPage(currentPage - 1)
-            carousel.current.scrollLeft -= card.current.offsetWidth
-        } else if (currentPage === 0) {
-            setCurrentPage(data.length - 1)
-            carousel.current.scrollLeft = carousel.current.scrollWidth
+        } else if (currentPage > 0) {
+            setMs(500)
+            setCurrentPage(currentPage - 1)
         }
 
         setTimeProgress(0)
     }
 
     const handleRight = () => {
-        if (currentPage < data.length - 1) {
+        if (currentPage === carouselChildren - 1) {
+            setMs(500)
             setCurrentPage(currentPage + 1)
-            carousel.current.scrollLeft += card.current.offsetWidth
-        } else if (currentPage === data.length - 1) {
+            setMs(0)
             setCurrentPage(0)
-            carousel.current.scrollLeft = 0
+        } else if (currentPage < carouselChildren) {
+            setMs(500)
+            setCurrentPage(currentPage + 1)
         }
 
         setTimeProgress(0)
@@ -52,7 +70,6 @@ const Carousel = ({ data }) => {
     const paginate = (i) => {
         if (i !== currentPage) {
             setCurrentPage(i)
-            carousel.current.scrollLeft = card.current.offsetWidth * i
             setTimeProgress(0)
         }
     }
@@ -65,27 +82,14 @@ const Carousel = ({ data }) => {
             <button className={styles.rightButton} title="Next" onClick={handleRight}>
                 <Icon icon="ep:arrow-right-bold" />
             </button>
-            <div className={styles.carousel} ref={carousel}>
-                {data.map((item, i) => (
-                    <div className={currentPage === i ? styles.selectedCard : styles.card} key={i} ref={card}>
-                        <h1 className={styles.primaryTitle}>Name</h1>
-                        <p className={styles.paragraph}>Rating</p>
-                        <p className={styles.paragraph}>Description</p>
-                        <div className={styles.actionsArea}>
-                            <Button>
-                                <Icon className={styles.icon} icon="ph:play-fill" />
-                                Watch
-                            </Button>
-                            <Button variant='secondary'>
-                                <Icon className={styles.icon} icon="octicon:plus-16" />
-                                Add to your list
-                            </Button>
-                        </div>
-                    </div>
-                ))}
+            <div className={styles.carouselWrapper} ref={carousel}>
+                <ul className={styles.carouselStage} style={{transition: `transform ${ms}ms ease 0ms`, transform: `translate3d(${position}px, 0px, 0px)`}}>
+                    {children}
+                    {clonedChild}
+                </ul>
             </div>
             <div className={styles.pagination}>
-                {data.map((item, i) => (
+                {controls && children.map((child, i) => (
                     <div className={currentPage === i ? styles.selectedPagePill : styles.pagePill} onClick={() => {paginate(i)}} key={i}>
                         {currentPage === i && (
                             <div className={styles.pagePillProgress} style={{width: timeProgress + "%"}}></div>
