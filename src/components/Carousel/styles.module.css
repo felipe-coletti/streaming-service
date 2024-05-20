@@ -42,7 +42,7 @@
     width: 100%;
 }
 
-.pagePill {
+.pagePill, .selectedPagePill {
     width: 0.5rem;
 }
   
@@ -51,11 +51,18 @@
 }
 
 .selectedPagePill {
+    background-color: #fff;
+}
+
+.longSelectedPagePill {
     width: 3rem;
 }
 
-.pagePill, .selectedPagePill {
+.pagePill, .longSelectedPagePill {
     background-color: #353535;
+}
+
+.pagePill, .selectedPagePill, .longSelectedPagePill {
     border-radius: 0.25rem;
     cursor: pointer;
     height: 0.5rem;

@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react'
 const Carousel = ({ autoPlay=false, controls=false, children }) => {
     const carousel = useRef(null)
 
-    const carouselChildren = Children.count(children)
+    const carouselChildren = Children.count(children) - 1
     const clonedChild = Children.toArray(children)[0]
 
     const [currentPage, setCurrentPage] = useState(0)
@@ -42,10 +42,10 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
     const handleLeft = () => {
         if (currentPage === 0) {
             setMs(0)
-            setCurrentPage(carouselChildren)
-            setMs(500)
-            setCurrentPage(currentPage - 1)
-        } else if (currentPage > 0) {
+            setCurrentPage(carouselChildren + 1)
+        }
+
+        if (currentPage > 0) {
             setMs(500)
             setCurrentPage(currentPage - 1)
         }
@@ -54,14 +54,12 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
     }
 
     const handleRight = () => {
-        if (currentPage === carouselChildren - 1) {
-            setMs(500)
-            setCurrentPage(currentPage + 1)
+        setMs(500)
+        setCurrentPage(currentPage + 1)
+        
+        if (currentPage === carouselChildren + 1) {   
             setMs(0)
             setCurrentPage(0)
-        } else if (currentPage < carouselChildren) {
-            setMs(500)
-            setCurrentPage(currentPage + 1)
         }
 
         setTimeProgress(0)
@@ -90,8 +88,8 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
             </div>
             <div className={styles.pagination}>
                 {controls && children.map((child, i) => (
-                    <div className={currentPage === i ? styles.selectedPagePill : styles.pagePill} onClick={() => {paginate(i)}} key={i}>
-                        {currentPage === i && (
+                    <div className={currentPage === i ? (autoPlay ? styles.longSelectedPagePill : styles.selectedPagePill) : styles.pagePill} onClick={() => {paginate(i)}} key={i}>
+                        {autoPlay && currentPage === i && (
                             <div className={styles.pagePillProgress} style={{width: timeProgress + "%"}}></div>
                         )}
                     </div>
