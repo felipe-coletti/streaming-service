@@ -11,11 +11,9 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
 
     const [width, setWidth] = useState(0)
     const [currentPage, setCurrentPage] = useState(0)
-    //const [ms, setMs] = useState(500)
     const [isPaused, setPaused] = useState(false)
     const [timeProgress, setTimeProgress] = useState(0)
 
-    //const ms = currentPage != carouselChildren && currentPage != 0 ? 500 : 0
     const position = currentPage * width * -1
     const pagePeriod = 10000
 
