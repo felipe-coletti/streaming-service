@@ -39,12 +39,21 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
 
     const handleLeft = () => {
         if (currentPage === 0) {
-            ms.current = 0
-            setCurrentPage(carouselChildren + 1)
+            setTimeout(() => {
+                ms.current = 0
+
+                setCurrentPage(carouselChildren + 1)
+            }, 0)
+            setTimeout(() => {
+                ms.current = 500
+
+                setCurrentPage(carouselChildren)
+            }, ms.current)
         }
 
         if (currentPage > 0) {
             ms.current = 500
+
             setCurrentPage(currentPage - 1)
         }
 
@@ -53,11 +62,13 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
 
     const handleRight = () => {
         ms.current = 500
+        
         setCurrentPage(currentPage + 1)
         
         if (currentPage === carouselChildren) {
             setTimeout(() => {
                 ms.current = 0
+
                 setCurrentPage(0)
             }, ms.current)
         }
@@ -73,7 +84,7 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
     }
 
     return (
-        <div className={styles.carouselContainer} onMouseOver={autoPlay && (() => {setPaused(true)})} onMouseOut={autoPlay && (() => {setPaused(false)})}>
+        <div className={styles.carouselContainer} onMouseOver={() => {autoPlay && setPaused(true)}} onMouseOut={() => {autoPlay && setPaused(false)}}>
             <button className={styles.leftButton} title="Previous" onClick={handleLeft}>
                 <Icon icon="ep:arrow-left-bold" />
             </button>
