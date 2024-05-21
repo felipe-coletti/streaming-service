@@ -55,9 +55,11 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
         ms.current = 500
         setCurrentPage(currentPage + 1)
         
-        if (currentPage === carouselChildren + 1) {
-            ms.current = 0
-            setCurrentPage(0)
+        if (currentPage === carouselChildren) {
+            setTimeout(() => {
+                ms.current = 0
+                setCurrentPage(0)
+            }, ms.current)
         }
 
         setTimeProgress(0)
