@@ -42,4 +42,8 @@
     .paragraph {
         display: none;
     }
+
+    .actionsArea button {
+        width: 100%;
+    }
 }
