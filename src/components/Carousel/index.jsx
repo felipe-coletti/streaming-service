@@ -39,11 +39,10 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
 
     const handleLeft = () => {
         if (currentPage === 0) {
-            setTimeout(() => {
-                ms.current = 0
-
-                setCurrentPage(carouselChildren + 1)
-            }, 0)
+            ms.current = 0
+            
+            setCurrentPage(carouselChildren + 1)
+            
             setTimeout(() => {
                 ms.current = 500
 
@@ -62,7 +61,7 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
 
     const handleRight = () => {
         ms.current = 500
-        
+
         setCurrentPage(currentPage + 1)
         
         if (currentPage === carouselChildren) {
