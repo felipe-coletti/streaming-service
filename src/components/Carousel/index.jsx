@@ -19,7 +19,9 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
 
     useLayoutEffect(() => {
         setWidth(carousel.current.offsetWidth)
-    }, [])
+    })
+
+    console.log("Renderizou")
 
     useEffect(() => {
         if (autoPlay) {
@@ -28,14 +30,14 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
                     setTimeProgress(timeProgress + 1)
 
                     if (timeProgress === 100) {
-                        handleRight()
+                        handleNext()
                     }
                 }
             }, pagePeriod / 100)
         }
     })
 
-    const handleLeft = () => {
+    const handlePrevious = () => {
         if (currentPage === 0) {
             ms.current = 0
             
@@ -57,7 +59,7 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
         setTimeProgress(0)
     }
 
-    const handleRight = () => {
+    const handleNext = () => {
         ms.current = 500
 
         setCurrentPage(currentPage + 1)
@@ -82,10 +84,10 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
 
     return (
         <div className={styles.carouselContainer} onMouseOver={() => {autoPlay && setPaused(true)}} onMouseOut={() => {autoPlay && setPaused(false)}}>
-            <button className={styles.leftButton} title="Previous" onClick={handleLeft}>
+            <button className={styles.leftButton} title="Previous" onClick={handlePrevious}>
                 <Icon icon="ep:arrow-left-bold" />
             </button>
-            <button className={styles.rightButton} title="Next" onClick={handleRight}>
+            <button className={styles.rightButton} title="Next" onClick={handleNext}>
                 <Icon icon="ep:arrow-right-bold" />
             </button>
             <div className={styles.carouselWrapper} ref={carousel}>
@@ -96,7 +98,7 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
             </div>
             <div className={styles.pagination}>
                 {controls && children.map((child, i) => (
-                    <div className={currentPage === i ? (autoPlay ? styles.longSelectedPagePill : styles.selectedPagePill) : styles.pagePill} onClick={() => {paginate(i)}} key={i}>
+                    <div className={currentPage === i ? (autoPlay ? styles.longSelectedPagePill : styles.selectedPagePill) : styles.pagePill} onClick={() => paginate(i)} key={i}>
                         {autoPlay && currentPage === i && (
                             <div className={styles.pagePillProgress} style={{width: timeProgress + "%"}}></div>
                         )}
