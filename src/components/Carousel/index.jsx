@@ -15,9 +15,7 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
     const [timeProgress, setTimeProgress] = useState(0)
 
     const position = currentPage * width * -1
-    const pagePeriod = 10000
-
-    console.log("Renderizou")
+    const autoPlayInterval = 10000
 
     useEffect(() => {
         setWidth(carousel.current.offsetWidth)
@@ -31,7 +29,7 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
                         handleNext()
                     }
                 }
-            }, pagePeriod / 100)
+            }, autoPlayInterval / 100)
         }
     })
 
