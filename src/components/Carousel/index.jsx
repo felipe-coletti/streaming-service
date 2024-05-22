@@ -1,4 +1,4 @@
-import { Children, useEffect, useRef, useState, useLayoutEffect } from 'react'
+import { Children, useEffect, useRef, useState } from 'react'
 import styles from './styles.module.css'
 import { Icon } from '@iconify/react'
 
@@ -17,13 +17,11 @@ const Carousel = ({ autoPlay=false, controls=false, children }) => {
     const position = currentPage * width * -1
     const pagePeriod = 10000
 
-    useLayoutEffect(() => {
-        setWidth(carousel.current.offsetWidth)
-    })
-
     console.log("Renderizou")
 
     useEffect(() => {
+        setWidth(carousel.current.offsetWidth)
+
         if (autoPlay) {
             setTimeout(function() {
                 if (!isPaused) {
