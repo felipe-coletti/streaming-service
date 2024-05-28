@@ -1,39 +1,16 @@
-import { React, useState } from "react";
-import styles from "./styles.module.css";
-import Header from "../../components/Header";
-import { Icon } from '@iconify/react';
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react"
+import styles from "./styles.module.css"
+import Header from "../../components/Header"
+import { Icon } from '@iconify/react'
+import { useParams } from "react-router-dom"
 import Button from '../../components/Button'
 import Tag from '../../components/Tag'
+import Rating from "../../components/Rating"
 
 const Serie = () => {
     const { id } = useParams()
 
-    const [starsNumber, setStarsNumber] = useState(0);
-
-    var changeableReviewStars = []
-
-    for (let i = 0; i < 5; i++) {
-        if (i < starsNumber) {
-            changeableReviewStars.push(<div className={styles.changeableFilledStar} onClick={() => {i + 1 === starsNumber ? setStarsNumber(0) : setStarsNumber(i + 1)}}><Icon icon="ion:star" /></div>)
-        } else {
-            changeableReviewStars.push(<div className={styles.changeableUnfilledStar} onClick={() => {setStarsNumber(i + 1)}}><Icon icon="ion:star-outline" /></div>)
-        }
-    }
-
-    const handleReviewStars = (stars) => {
-        var reviewStars = []
-
-        for (let i = 0; i < 5; i++) {
-            if (i < stars) {
-                reviewStars.push(<div className={styles.filledStar}><Icon icon="ion:star" /></div>)
-            } else {
-                reviewStars.push(<div className={styles.unfilledStar}><Icon icon="ion:star-outline" /></div>)
-            }
-        }
-
-        return reviewStars
-    }
+    const [rate, setRate] = useState(4)
 
     const isAuthenticated = false
 
@@ -45,7 +22,7 @@ const Serie = () => {
                     <div className={styles.sectionContent}>
                         <h1 className={styles.primaryTitle}>Name</h1>
                         <div className={styles.starsArea}>
-                            {handleReviewStars(4)}
+                            <Rating value={rate} onChange={setRate}/>
                             <p className={styles.paragraph}>Rating</p>
                         </div>
                         <p className={styles.paragraph}>Description</p>
@@ -98,9 +75,7 @@ const Serie = () => {
                             <div className={styles.reviewContainer}>
                                 <img className={styles.profileImage} alt=""/>
                                 <div className={styles.reviewContentArea}>
-                                    <div className={styles.actionsArea}>
-                                        {changeableReviewStars}
-                                    </div>
+                                    <Rating/>
                                     <input className={styles.input} placeholder="Write a title for the review"/>
                                     <input className={styles.input} placeholder="Write a review"/>
                                 </div>
@@ -121,9 +96,7 @@ const Serie = () => {
                                         <Icon className={styles.icon} icon="ph:dots-three-vertical-bold" />
                                     </Button>
                                 </div>
-                                <div className={styles.starsArea}>
-                                    {handleReviewStars(4)}
-                                </div>
+                                <Rating value={3} readOnly/>
                                 <h3 className={styles.tertiaryTitle}>Review title</h3>
                                 <p className={styles.paragraph}>Review</p>
                                 <div className={styles.actionsArea}>

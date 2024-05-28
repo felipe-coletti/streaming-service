@@ -1,0 +1,17 @@
+.container {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filledStar {
+    color: #FC413A;
+}
+
+.unfilledStar {
+    color: #ababab;
+}
+
+.filledStar, .unfilledStar {
+    font-size: 1.25rem;
+}

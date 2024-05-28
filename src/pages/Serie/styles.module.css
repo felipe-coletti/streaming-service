@@ -26,12 +26,6 @@
     font-size: 0.875rem;
 }
 
-.starsArea {
-    align-items: center;
-    display: flex;
-    gap: 0.5rem;
-}
-
 .actionsArea {
     align-items: center;
     display: flex;
@@ -145,22 +139,6 @@
 
 .reviewContainer .quaternaryTitle:hover {
     text-decoration: underline;
-}
-
-.filledStar, .changeableFilledStar {
-    color: #FC413A;
-}
-
-.unfilledStar, .changeableUnfilledStar {
-    color: #ababab;
-}
-
-.changeableFilledStar, .changeableUnfilledStar {
-    cursor: pointer;
-}
-
-.filledStar, .unfilledStar, .changeableFilledStar, .changeableUnfilledStar {
-    font-size: 1.25rem;
 }
 
 .tertiaryButton {
