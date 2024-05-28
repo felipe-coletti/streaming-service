@@ -36,13 +36,13 @@ const Rating = ({ value = 0, readOnly = false, onChange }) => {
 
         ratingStars.push(
             !readOnly ? (
-                <div className={style} style={{cursor: 'pointer'}} onClick={() => swicthValue(i)} onMouseEnter={() => {!alredyIn.current && setDisplayRate(i + 1), alredyIn.current=true}} onMouseLeave={() => alredyIn.current = false} key={i}>
+                <button className={style} style={{cursor: 'pointer'}} onClick={() => swicthValue(i)} onMouseEnter={() => {!alredyIn.current && setDisplayRate(i + 1), alredyIn.current=true}} onMouseLeave={() => alredyIn.current = false} key={i}>
                     {icon}
-                </div>
+                </button>
             ) : (
-                <div className={style} key={i}>
+                <button className={style} key={i}>
                     {icon}
-                </div>
+                </button>
             )
         )
     }
