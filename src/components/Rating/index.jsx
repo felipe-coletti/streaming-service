@@ -20,7 +20,7 @@ const Rating = ({ value = 0, readOnly = false, onChange }) => {
         onChange && onChange(rate.current)
     }
 
-    var reviewStars = []
+    var ratingStars = []
 
     for (let i = 0; i < 5; i++) {
         let style
@@ -34,9 +34,9 @@ const Rating = ({ value = 0, readOnly = false, onChange }) => {
             icon = <Icon icon="ion:star-outline" />
         }
 
-        reviewStars.push(
+        ratingStars.push(
             !readOnly ? (
-                <div className={style} style={{cursor: 'pointer'}} onClick={() => {swicthValue(i)}} onMouseEnter={() => {!alredyIn.current && setDisplayRate(i + 1), alredyIn.current=true}} onMouseLeave={() => {alredyIn.current = false}} key={i}>
+                <div className={style} style={{cursor: 'pointer'}} onClick={() => swicthValue(i)} onMouseEnter={() => {!alredyIn.current && setDisplayRate(i + 1), alredyIn.current=true}} onMouseLeave={() => alredyIn.current = false} key={i}>
                     {icon}
                 </div>
             ) : (
@@ -48,8 +48,8 @@ const Rating = ({ value = 0, readOnly = false, onChange }) => {
     }
 
     return (
-        <div className={styles.container} onMouseLeave={() => {!readOnly && setDisplayRate(rate.current)}}>
-            {reviewStars}
+        <div className={styles.container} onMouseLeave={() => !readOnly && setDisplayRate(rate.current)}>
+            {ratingStars}
         </div>
     )
 }

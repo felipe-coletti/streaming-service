@@ -21,9 +21,9 @@ const Serie = () => {
                 <section className={styles.section}>
                     <div className={styles.sectionContent}>
                         <h1 className={styles.primaryTitle}>Name</h1>
-                        <div className={styles.starsArea}>
+                        <div className={styles.actionsArea}>
                             <Rating value={rate} onChange={setRate}/>
-                            <p className={styles.paragraph}>Rating</p>
+                            <p className={styles.paragraph}>{rate}</p>
                         </div>
                         <p className={styles.paragraph}>Description</p>
                         <div className={styles.actionsArea}>
