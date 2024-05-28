@@ -28,20 +28,20 @@ const Rating = ({ value = 0, readOnly = false, onChange }) => {
 
         if (i < displayRate) {
             style = styles.filledStar
-            icon = 'star'
+            icon = <Icon icon="ion:star" />
         } else {
             style = styles.unfilledStar
-            icon = 'star-outline'
+            icon = <Icon icon="ion:star-outline" />
         }
 
         reviewStars.push(
             !readOnly ? (
                 <div className={style} style={{cursor: 'pointer'}} onClick={() => {swicthValue(i)}} onMouseEnter={() => {!alredyIn.current && setDisplayRate(i + 1), alredyIn.current=true}} onMouseLeave={() => {alredyIn.current = false}} key={i}>
-                    <Icon icon={`ion:${icon}`} />
+                    {icon}
                 </div>
             ) : (
                 <div className={style} key={i}>
-                    <Icon icon={`ion:${icon}`} />
+                    {icon}
                 </div>
             )
         )
