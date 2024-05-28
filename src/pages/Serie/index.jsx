@@ -22,8 +22,8 @@ const Serie = () => {
                     <div className={styles.sectionContent}>
                         <h1 className={styles.primaryTitle}>Name</h1>
                         <div className={styles.actionsArea}>
-                            <Rating value={rate} onChange={setRate}/>
-                            <p className={styles.paragraph}>{rate}</p>
+                            <Rating value={4} readOnly/>
+                            <p className={styles.paragraph}>4</p>
                         </div>
                         <p className={styles.paragraph}>Description</p>
                         <div className={styles.actionsArea}>
@@ -75,7 +75,7 @@ const Serie = () => {
                             <div className={styles.reviewContainer}>
                                 <img className={styles.profileImage} alt=""/>
                                 <div className={styles.reviewContentArea}>
-                                    <Rating/>
+                                    <Rating value={rate} onChange={setRate}/>
                                     <input className={styles.input} placeholder="Write a title for the review"/>
                                     <input className={styles.input} placeholder="Write a review"/>
                                 </div>
