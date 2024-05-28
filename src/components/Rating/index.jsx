@@ -23,27 +23,26 @@ const Rating = ({ value = 0, readOnly = false, onChange }) => {
     var reviewStars = []
 
     for (let i = 0; i < 5; i++) {
+        let style
+        let icon
+
+        if (i < displayRate) {
+            style = styles.filledStar
+            icon = 'star'
+        } else {
+            style = styles.unfilledStar
+            icon = 'star-outline'
+        }
+
         reviewStars.push(
             !readOnly ? (
-                i < displayRate ? (
-                    <div className={styles.filledStar} style={{cursor: 'pointer'}} onClick={() => {swicthValue(i)}} onMouseEnter={() => {!alredyIn.current && setDisplayRate(i + 1), alredyIn.current=true}} onMouseLeave={() => {alredyIn.current = false}} key={i}>
-                        <Icon icon="ion:star" />
-                    </div>
-                ) : (
-                    <div className={styles.unfilledStar} style={{cursor: 'pointer'}} onClick={() => {swicthValue(i)}} onMouseEnter={() => {!alredyIn.current && setDisplayRate(i + 1), alredyIn.current=true}} onMouseLeave={() => {alredyIn.current = false}} key={i}>
-                        <Icon icon="ion:star-outline" />
-                    </div>
-                )
+                <div className={style} style={{cursor: 'pointer'}} onClick={() => {swicthValue(i)}} onMouseEnter={() => {!alredyIn.current && setDisplayRate(i + 1), alredyIn.current=true}} onMouseLeave={() => {alredyIn.current = false}} key={i}>
+                    <Icon icon={`ion:${icon}`} />
+                </div>
             ) : (
-                i < displayRate ? (
-                    <div className={styles.filledStar} key={i}>
-                        <Icon icon="ion:star" />
-                    </div>
-                ) : (
-                    <div className={styles.unfilledStar} key={i}>
-                        <Icon icon="ion:star-outline" />
-                    </div>
-                )
+                <div className={style} key={i}>
+                    <Icon icon={`ion:${icon}`} />
+                </div>
             )
         )
     }
