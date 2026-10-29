@@ -1,13 +1,14 @@
+import { Link } from 'react-router-dom'
 import styles from './styles.module.css'
 import { Button } from '../Button'
 import { Icon } from '@iconify/react'
 
 export const Header = () => {
 	return (
-		<div className={styles.container}>
-			<a className={styles.logo} href='/'>
+		<header className={styles.container}>
+			<Link className={styles.logo} to='/'>
 				Name
-			</a>
+			</Link>
 			<div className={styles.actionsArea}>
 				<Button variant='tertiary' title='Search'>
 					<Icon icon='octicon:search-16' />
@@ -17,6 +18,6 @@ export const Header = () => {
 				</Button>
 				<Button href='/sign-up'>Sign up</Button>
 			</div>
-		</div>
+		</header>
 	)
 }

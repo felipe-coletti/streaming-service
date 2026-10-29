@@ -1,27 +1,23 @@
+import { Link } from 'react-router-dom'
 import type { ButtonProps } from './Button.types'
 import styles from './styles.module.css'
 
-export const Button = ({ type = 'button', variant = 'primary', href, title, children, ...rest }: ButtonProps) => {
-	let style
+const variantStyles = {
+	primary: styles.primaryButton,
+	secondary: styles.secondaryButton,
+	tertiary: styles.tertiaryButton
+}
 
-	switch (variant) {
-		case 'primary':
-			style = styles.primaryButton
-			break
-		case 'secondary':
-			style = styles.secondaryButton
-			break
-		case 'tertiary':
-			style = styles.tertiaryButton
-	}
+export const Button = ({ type = 'button', variant = 'primary', href, title, onClick, children }: ButtonProps) => {
+	const style = variantStyles[variant]
 
 	return href == null ? (
-		<button className={style} type={type} title={title} {...rest}>
+		<button className={style} type={type} title={title} aria-label={title} onClick={onClick}>
 			{children}
 		</button>
 	) : (
-		<a className={style} href={href} {...rest}>
+		<Link className={style} to={href} title={title} aria-label={title} onClick={onClick}>
 			{children}
-		</a>
+		</Link>
 	)
 }

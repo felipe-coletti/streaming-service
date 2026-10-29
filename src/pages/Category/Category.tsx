@@ -1,6 +1,7 @@
 import styles from './styles.module.css'
 import { Header } from '../../components'
 import { Icon } from '@iconify/react'
+import { Link } from 'react-router-dom'
 
 export const Category = () => {
 	return (
@@ -10,20 +11,20 @@ export const Category = () => {
 				<div className={styles.section}>
 					<div className={styles.titleArea}>
 						<h1 className={styles.primaryTitle}>Category</h1>
-						<button className={styles.primaryButton}>
+						<button className={styles.primaryButton} type='button'>
 							<Icon className={styles.icon} icon='solar:list-bold' />
 							Sort by
 						</button>
 					</div>
 					<div className={styles.grid}>
-						<a className={styles.card} href='/series/undefined'>
+						<Link className={styles.card} to='/series/undefined'>
 							<img className={styles.cardImage} alt='' />
 							<h2 className={styles.secondaryTitle}>Name</h2>
-						</a>
-						<a className={styles.card} href='/series/undefined'>
+						</Link>
+						<Link className={styles.card} to='/series/undefined'>
 							<img className={styles.cardImage} alt='' />
 							<h2 className={styles.secondaryTitle}>Name</h2>
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>

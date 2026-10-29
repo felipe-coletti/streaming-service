@@ -28,15 +28,21 @@ export const VideoPlayer = () => {
 
 		const updateTime = () => {
 			setCurrentTime(video.currentTime)
-			setDuration(video.duration)
+			setDuration(Number.isFinite(video.duration) ? video.duration : 0)
 		}
+		const handlePlay = () => setPaused(false)
+		const handlePause = () => setPaused(true)
 
 		video.addEventListener('timeupdate', updateTime)
 		video.addEventListener('loadedmetadata', updateTime)
+		video.addEventListener('play', handlePlay)
+		video.addEventListener('pause', handlePause)
 
 		return () => {
 			video.removeEventListener('timeupdate', updateTime)
 			video.removeEventListener('loadedmetadata', updateTime)
+			video.removeEventListener('play', handlePlay)
+			video.removeEventListener('pause', handlePause)
 		}
 	}, [])
 
@@ -49,15 +55,17 @@ export const VideoPlayer = () => {
 		return () => document.removeEventListener('fullscreenchange', handleFullscreenChange)
 	}, [])
 
+	const play = () => {
+		player.current?.play().catch(() => setPaused(true))
+	}
+
 	const handlePauseOrResume = () => {
 		if (!player.current) return
 
-		if (isPaused) {
-			player.current.play()
-			setPaused(false)
+		if (player.current.paused) {
+			play()
 		} else {
 			player.current.pause()
-			setPaused(true)
 		}
 	}
 
@@ -80,22 +88,24 @@ export const VideoPlayer = () => {
 		if (displayVolume > 0) {
 			setDisplayVolume(0)
 		} else {
-			setDisplayVolume(volume)
+			const restoredVolume = volume > 0 ? volume : 100
+			setDisplayVolume(restoredVolume)
+			setVolume(restoredVolume)
 		}
 	}
 
 	const handleVolumeChange = (v: number) => {
 		setDisplayVolume(v)
-		setVolume(v)
+		if (v > 0) setVolume(v)
 	}
 
 	const handleFullscreenToggle = () => {
 		if (!player.current) return
 
 		if (!document.fullscreenElement) {
-			player.current.requestFullscreen()
+			player.current.requestFullscreen().catch(() => {})
 		} else {
-			document.exitFullscreen()
+			document.exitFullscreen().catch(() => {})
 		}
 	}
 
@@ -107,8 +117,7 @@ export const VideoPlayer = () => {
 
 	const handleForward = () => {
 		if (player.current) {
-			player.current.currentTime =
-				player.current.currentTime + 10 < duration ? player.current.currentTime + 10 : duration
+			player.current.currentTime = Math.min(player.current.currentTime + 10, duration)
 		}
 	}
 
@@ -123,27 +132,31 @@ export const VideoPlayer = () => {
 				onClick={() => {
 					if (!isStarted) {
 						setStarted(true)
-						setPaused(false)
-						player.current?.play()
+						play()
 					} else {
 						handlePauseOrResume()
 					}
 				}}
 			>
 				{!isStarted && (
-					<button className={styles.mainVideoButton}>
+					<button className={styles.mainVideoButton} type='button' aria-label='Play'>
 						<Icon icon='ph:play-fill' />
 					</button>
 				)}
 			</div>
 			<div className={styles.mobileVideoControls}>
-				<button className={styles.videoControlButton} onClick={handleBackward}>
+				<button className={styles.videoControlButton} type='button' aria-label='Back 10 seconds' onClick={handleBackward}>
 					<Icon icon='ph:arrow-counter-clockwise-bold' />
 				</button>
-				<button className={styles.mainVideoButton} onClick={handlePauseOrResume}>
+				<button
+					className={styles.mainVideoButton}
+					type='button'
+					aria-label={isPaused ? 'Play' : 'Pause'}
+					onClick={handlePauseOrResume}
+				>
 					{isPaused ? <Icon icon='ph:play-fill' /> : <Icon icon='ph:pause-fill' />}
 				</button>
-				<button className={styles.videoControlButton} onClick={handleForward}>
+				<button className={styles.videoControlButton} type='button' aria-label='Forward 10 seconds' onClick={handleForward}>
 					<Icon icon='ph:arrow-clockwise-bold' />
 				</button>
 			</div>
@@ -153,19 +166,31 @@ export const VideoPlayer = () => {
 					type='range'
 					min={0}
 					max={100}
+					step='any'
 					value={progress}
+					aria-label='Progress'
 					onChange={e => handleProgress(Number(e.target.value))}
 				/>
 				<div className={styles.videoControlButtons}>
 					<div className={styles.videoActionsArea}>
-						<button className={styles.videoControlButton} onClick={handlePauseOrResume}>
+						<button
+							className={styles.videoControlButton}
+							type='button'
+							aria-label={isPaused ? 'Play' : 'Pause'}
+							onClick={handlePauseOrResume}
+						>
 							{isPaused ? <Icon icon='ph:play-fill' /> : <Icon icon='ph:pause-fill' />}
 						</button>
-						<button className={styles.videoControlButton}>
+						<button className={styles.videoControlButton} type='button' aria-label='Next episode'>
 							<Icon icon='ph:skip-forward-fill' />
 						</button>
 						<div className={styles.videoVolumeControl}>
-							<button className={styles.volumeButton} onClick={toggleMute}>
+							<button
+								className={styles.volumeButton}
+								type='button'
+								aria-label={isMuted ? 'Unmute' : 'Mute'}
+								onClick={toggleMute}
+							>
 								{displayVolume <= 0 ? (
 									<Icon icon='ph:speaker-simple-slash-fill' />
 								) : displayVolume < 50 ? (
@@ -180,6 +205,7 @@ export const VideoPlayer = () => {
 								min={0}
 								max={100}
 								value={displayVolume}
+								aria-label='Volume'
 								onChange={e => handleVolumeChange(Number(e.target.value))}
 							/>
 						</div>
@@ -190,10 +216,15 @@ export const VideoPlayer = () => {
 						</div>
 					</div>
 					<div className={styles.videoActionsArea}>
-						<button className={styles.videoControlButton}>
+						<button className={styles.videoControlButton} type='button' aria-label='Settings'>
 							<Icon icon='ph:gear-six-fill' />
 						</button>
-						<button className={styles.videoControlButton} onClick={handleFullscreenToggle}>
+						<button
+							className={styles.videoControlButton}
+							type='button'
+							aria-label={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
+							onClick={handleFullscreenToggle}
+						>
 							{!isFullscreen ? (
 								<Icon icon='ph:arrows-out-simple-bold' />
 							) : (

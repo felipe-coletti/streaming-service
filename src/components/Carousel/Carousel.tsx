@@ -6,6 +6,7 @@ import { Icon } from '@iconify/react'
 export const Carousel = ({ autoPlay = false, controls = false, children }: CarouselProps) => {
 	const carousel = useRef<HTMLDivElement>(null)
 	const ms = useRef(500)
+	const transitionTimeout = useRef<ReturnType<typeof setTimeout>>(undefined)
 
 	const carouselChildren = Children.count(children) - 1
 	const clonedChild = useMemo(() => Children.toArray(children)[0], [children])
@@ -16,6 +17,8 @@ export const Carousel = ({ autoPlay = false, controls = false, children }: Carou
 	const [timeProgress, setTimeProgress] = useState(0)
 
 	const position = currentPage * width * -1
+	// The last stage item is a clone of the first one, used for the infinite loop effect
+	const activePage = currentPage % (carouselChildren + 1)
 	const autoPlayInterval = 10000
 
 	useEffect(() => {
@@ -30,29 +33,14 @@ export const Carousel = ({ autoPlay = false, controls = false, children }: Carou
 		return () => window.removeEventListener('resize', updateWidth)
 	}, [])
 
-	useEffect(() => {
-		if (!autoPlay) return
-
-		const interval = setInterval(() => {
-			if (!isPaused) {
-				setTimeProgress(prev => {
-					if (prev >= 100) {
-						handleNext()
-						return 0
-					}
-					return prev + 1
-				})
-			}
-		}, autoPlayInterval / 100)
-
-		return () => clearInterval(interval)
-	}, [autoPlay, isPaused, currentPage])
-
 	const handlePrevious = useCallback(() => {
+		if (currentPage > carouselChildren) return
+
 		if (currentPage === 0) {
 			ms.current = 0
 			setCurrentPage(carouselChildren + 1)
-			setTimeout(() => {
+			clearTimeout(transitionTimeout.current)
+			transitionTimeout.current = setTimeout(() => {
 				ms.current = 500
 				setCurrentPage(carouselChildren)
 			}, 20)
@@ -64,10 +52,13 @@ export const Carousel = ({ autoPlay = false, controls = false, children }: Carou
 	}, [currentPage, carouselChildren])
 
 	const handleNext = useCallback(() => {
+		if (currentPage > carouselChildren) return
+
 		if (currentPage === carouselChildren) {
 			ms.current = 500
 			setCurrentPage(currentPage + 1)
-			setTimeout(() => {
+			clearTimeout(transitionTimeout.current)
+			transitionTimeout.current = setTimeout(() => {
 				ms.current = 0
 				setCurrentPage(0)
 			}, 500)
@@ -78,9 +69,28 @@ export const Carousel = ({ autoPlay = false, controls = false, children }: Carou
 		setTimeProgress(0)
 	}, [currentPage, carouselChildren])
 
+	useEffect(() => {
+		if (!autoPlay || isPaused) return
+
+		const interval = setInterval(() => {
+			setTimeProgress(prev => Math.min(prev + 1, 100))
+		}, autoPlayInterval / 100)
+
+		return () => clearInterval(interval)
+	}, [autoPlay, isPaused])
+
+	useEffect(() => {
+		if (autoPlay && timeProgress >= 100) handleNext()
+	}, [autoPlay, timeProgress, handleNext])
+
+	useEffect(() => {
+		return () => clearTimeout(transitionTimeout.current)
+	}, [])
+
 	const paginate = useCallback(
 		(i: number) => {
 			if (currentPage !== i) {
+				ms.current = 500
 				setCurrentPage(i)
 				setTimeProgress(0)
 			}
@@ -98,10 +108,10 @@ export const Carousel = ({ autoPlay = false, controls = false, children }: Carou
 				if (autoPlay) setPaused(false)
 			}}
 		>
-			<button className={styles.leftButton} title='Previous' onClick={handlePrevious}>
+			<button className={styles.leftButton} type='button' title='Previous' aria-label='Previous' onClick={handlePrevious}>
 				<Icon icon='ep:arrow-left-bold' />
 			</button>
-			<button className={styles.rightButton} title='Next' onClick={handleNext}>
+			<button className={styles.rightButton} type='button' title='Next' aria-label='Next' onClick={handleNext}>
 				<Icon icon='ep:arrow-right-bold' />
 			</button>
 
@@ -121,21 +131,24 @@ export const Carousel = ({ autoPlay = false, controls = false, children }: Carou
 			{controls && (
 				<div className={styles.pagination}>
 					{Children.map(children, (_, i) => (
-						<div
+						<button
 							className={
-								currentPage === i
+								activePage === i
 									? autoPlay
 										? styles.longSelectedPagePill
 										: styles.selectedPagePill
 									: styles.pagePill
 							}
+							type='button'
+							aria-label={`Go to slide ${i + 1}`}
+							aria-current={activePage === i}
 							onClick={() => paginate(i)}
 							key={i}
 						>
-							{autoPlay && currentPage === i && (
+							{autoPlay && activePage === i && (
 								<div className={styles.pagePillProgress} style={{ width: timeProgress + '%' }} />
 							)}
-						</div>
+						</button>
 					))}
 				</div>
 			)}

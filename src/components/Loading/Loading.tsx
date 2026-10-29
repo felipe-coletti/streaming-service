@@ -3,8 +3,8 @@ import { Icon } from '@iconify/react'
 
 export const Loading = () => {
 	return (
-		<a className={styles.container}>
+		<div className={styles.container} role='status' aria-label='Loading'>
 			<Icon icon='line-md:loading-loop' />
-		</a>
+		</div>
 	)
 }

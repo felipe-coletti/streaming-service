@@ -1,65 +1,56 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import type { RatingProps } from './Rating.types'
 import styles from './styles.module.css'
 import { Icon } from '@iconify/react'
 
+const MAX_RATING = 5
+
 export const Rating = ({ value = 0, readOnly = false, onChange }: RatingProps) => {
-	const rate = useRef(value)
-	const alredyIn = useRef(false)
+	const [rate, setRate] = useState(value)
+	const [hoverRate, setHoverRate] = useState<number | null>(null)
 
-	const [displayRate, setDisplayRate] = useState(rate.current)
+	const displayRate = hoverRate ?? rate
 
-	const swicthValue = (i: number) => {
-		if (rate.current === i + 1) {
-			rate.current = 0
-		} else {
-			rate.current = i + 1
-		}
+	const switchValue = (newValue: number) => {
+		const nextRate = rate === newValue ? 0 : newValue
 
-		setDisplayRate(rate.current)
-
-		onChange && onChange(rate.current)
+		setRate(nextRate)
+		onChange?.(nextRate)
 	}
 
-	var ratingStars = []
+	const renderIcon = (i: number) =>
+		i < displayRate ? <Icon icon='ion:star' /> : <Icon icon='ion:star-outline' />
 
-	for (let i = 0; i < 5; i++) {
-		let style
-		let icon
+	const getStyle = (i: number) => (i < displayRate ? styles.filledStar : styles.unfilledStar)
 
-		if (i < displayRate) {
-			style = styles.filledStar
-			icon = <Icon icon='ion:star' />
-		} else {
-			style = styles.unfilledStar
-			icon = <Icon icon='ion:star-outline' />
-		}
-
-		ratingStars.push(
-			!readOnly ? (
-				<button
-					className={style}
-					style={{ cursor: 'pointer' }}
-					onClick={() => swicthValue(i)}
-					onMouseEnter={() => {
-						!alredyIn.current && setDisplayRate(i + 1), (alredyIn.current = true)
-					}}
-					onMouseLeave={() => (alredyIn.current = false)}
-					key={i}
-				>
-					{icon}
-				</button>
-			) : (
-				<button className={style} key={i}>
-					{icon}
-				</button>
-			)
+	if (readOnly) {
+		return (
+			<div className={styles.container} role='img' aria-label={`Rating: ${rate} out of ${MAX_RATING}`}>
+				{Array.from({ length: MAX_RATING }, (_, i) => (
+					<span className={getStyle(i)} key={i}>
+						{renderIcon(i)}
+					</span>
+				))}
+			</div>
 		)
 	}
 
 	return (
-		<div className={styles.container} onMouseLeave={() => !readOnly && setDisplayRate(rate.current)}>
-			{ratingStars}
+		<div className={styles.container} onMouseLeave={() => setHoverRate(null)}>
+			{Array.from({ length: MAX_RATING }, (_, i) => (
+				<button
+					className={getStyle(i)}
+					style={{ cursor: 'pointer' }}
+					type='button'
+					aria-label={`Rate ${i + 1} out of ${MAX_RATING}`}
+					aria-pressed={rate === i + 1}
+					onClick={() => switchValue(i + 1)}
+					onMouseEnter={() => setHoverRate(i + 1)}
+					key={i}
+				>
+					{renderIcon(i)}
+				</button>
+			))}
 		</div>
 	)
 }

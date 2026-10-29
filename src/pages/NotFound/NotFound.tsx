@@ -1,19 +1,20 @@
+import { Link } from 'react-router-dom'
 import styles from './styles.module.css'
 
 export const NotFound = () => {
 	return (
 		<div className={styles.container}>
 			<header className={styles.header}>
-				<a className={styles.logo} href='/'>
+				<Link className={styles.logo} to='/'>
 					Name
-				</a>
+				</Link>
 			</header>
 			<div className={styles.contentArea}>
 				<h1 className={styles.primaryTitle}>404</h1>
 				<h2 className={styles.secondaryTitle}>Page not found</h2>
-				<a className={styles.link} href='/'>
+				<Link className={styles.link} to='/'>
 					Return to home page
-				</a>
+				</Link>
 			</div>
 		</div>
 	)

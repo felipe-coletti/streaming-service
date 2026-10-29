@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styles from './styles.module.css'
 import { Button, Header, Rating, Tag } from '../../components'
 import { Icon } from '@iconify/react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 export const Serie = () => {
 	const { id } = useParams()
@@ -53,10 +53,10 @@ export const Serie = () => {
 						<h3 className={styles.tertiaryTitle}>Episodes</h3>
 					</div>
 					<div className={styles.grid}>
-						<a className={styles.card} href='/series/undefined/episode/undefined'>
+						<Link className={styles.card} to={`/series/${id}/episode/1`}>
 							<img className={styles.cardImage} alt='' />
 							<h4 className={styles.quaternaryTitle}>Name</h4>
-						</a>
+						</Link>
 					</div>
 				</section>
 				<section className={styles.section}>
@@ -73,8 +73,8 @@ export const Serie = () => {
 								<img className={styles.profileImage} alt='' />
 								<div className={styles.reviewContentArea}>
 									<Rating value={rate} onChange={setRate} />
-									<input className={styles.input} placeholder='Write a title for the review' />
-									<input className={styles.input} placeholder='Write a review' />
+									<input className={styles.input} placeholder='Write a title for the review' aria-label='Review title' />
+									<input className={styles.input} placeholder='Write a review' aria-label='Review' />
 								</div>
 								<Button variant='primary'>Send</Button>
 							</div>
@@ -89,9 +89,7 @@ export const Serie = () => {
 							<div className={styles.reviewContentArea}>
 								<div className={styles.titleArea}>
 									<p className={styles.paragraph}>
-										<a className={styles.quaternaryTitle} href=''>
-											Name
-										</a>{' '}
+										<span className={styles.quaternaryTitle}>Name</span>{' '}
 										• January 1st, 0000
 									</p>
 									<Button variant='tertiary' title='Options'>

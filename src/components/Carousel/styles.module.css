@@ -68,7 +68,9 @@
 .pagePill,
 .selectedPagePill,
 .longSelectedPagePill {
+	border: none;
 	border-radius: 0.25rem;
+	padding: 0;
 	cursor: pointer;
 	height: 0.5rem;
 	overflow: hidden;

@@ -1,5 +1,5 @@
 export interface RatingProps {
-	value: number
+	value?: number
 	readOnly?: boolean
 	onChange?: (value: number) => void
 }
